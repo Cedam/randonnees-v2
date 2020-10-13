@@ -1,5 +1,6 @@
 use randonnees;
 
+
 DROP TABLE `article`;
 DROP TABLE `day`;
 DROP TABLE `trek`; 
