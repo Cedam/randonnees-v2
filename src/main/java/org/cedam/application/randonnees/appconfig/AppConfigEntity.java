@@ -1,4 +1,4 @@
-package org.cedam.application.randonnees.entity.config;
+package org.cedam.application.randonnees.appconfig;
 
 //import org.springframework.context.annotation.ComponentScan;
 //import org.springframework.context.annotation.ComponentScans;
@@ -6,6 +6,6 @@ package org.cedam.application.randonnees.entity.config;
 
 //@Configuration
 //@ComponentScans(value = { @ComponentScan("org.cedam.application.randonnees.entity")})
-public class AppConfig {
+public class AppConfigEntity {
 		
 }

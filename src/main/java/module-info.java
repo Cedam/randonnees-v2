@@ -1,11 +1,8 @@
 module randonneesv2 {
 	exports org.cedam.application.randonnees.entity;
-	exports org.cedam.application.randonnees.entityV6;
-	exports org.cedam.application.randonnees;
 	exports org.cedam.application.randonnees.dao;
 	exports org.cedam.application.randonnees.service.controller;
 	exports org.cedam.application.randonnees.business;
-	exports org.cedam.application.randonnees.entity.config;
 
 	requires java.persistence;
 	requires spring.beans;
@@ -18,5 +15,5 @@ module randonneesv2 {
 	requires spring.orm;
 	requires spring.tx;
 	requires spring.web;
-	requires tomcat.embed.core;
+	//requires tomcat.embed.core;
 }

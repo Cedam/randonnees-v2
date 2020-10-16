@@ -3,7 +3,7 @@ package org.cedam.application.randonnees.service.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.cedam.application.randonnees.entityV6.Day;
+import org.cedam.application.randonnees.entity.Day;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;

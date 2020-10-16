@@ -1,7 +1,7 @@
 package org.cedam.application.randonnees.service.controler;
 
-import org.cedam.application.randonnees.AppConfigService;
-import org.cedam.application.randonnees.entityV6.Day;
+import org.cedam.application.randonnees.appconfig.AppConfigService;
+import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.service.controller.DayController;
 import org.junit.After;
 import org.junit.Assert;
@@ -44,7 +44,7 @@ public class DayControllerTest {
 		int idDay = 0;
 		Day day = new Day();
 		day.setId(idDay);
-		day = dayController.save(day);
+		day = dayController.save(day	);
 		Assert.assertEquals(idDay, day.getId());
 	}
 

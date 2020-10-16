@@ -1,23 +1,23 @@
 package org.cedam.application.randonnees.business;
 
-import org.cedam.application.randonnees.entity.DayV2;
-import org.cedam.application.randonnees.entity.TrekV2;
+import org.cedam.application.randonnees.entity.Day;
+import org.cedam.application.randonnees.entity.Trek;
 
 public class ConstanteTest {
 
 	
-	public static TrekV2 getTrek()
+	public static Trek getTrek()
 	{
-		TrekV2 trekV2 = new TrekV2();
-		trekV2.setId(TREK_TEST_ID_1);
-		trekV2.setName(TREK_TEST_NAME_1);
-		trekV2.setLocation(TREK_TEST_LOCATION_1);
-		return trekV2;
+		Trek trek = new Trek();
+		trek.setId(TREK_TEST_ID_1);
+		trek.setName(TREK_TEST_NAME_1);
+		trek.setLocation(TREK_TEST_LOCATION_1);
+		return trek;
 	}
 	
-	public static DayV2 getDay()
+	public static Day getDay()
 	{
-		DayV2 day = new DayV2();
+		Day day = new Day();
 		day.setNumber(DAY_TEST_NUMBER_1);		
 		day.setTrek(getTrek());
 		return day;

@@ -2,8 +2,8 @@ package org.cedam.application.randonnees.business;
 
 import java.util.List;
 
-import org.cedam.application.randonnees.AppConfigBusiness;
-import org.cedam.application.randonnees.entity.TrekV2;
+import org.cedam.application.randonnees.appconfig.AppConfigBusiness;
+import org.cedam.application.randonnees.entity.Day;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -20,10 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigBusiness.class)
 @SpringBootTest
-public class TrekV3BOTest {
+public class DayBOTest {
 
 	@Autowired
-	private TrekV3Business object;
+	private DayBusiness object;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -44,31 +44,28 @@ public class TrekV3BOTest {
 	@Test
 	@Transactional
 	public void testGetById() {
-		List<TrekV2> listeTreks = object.getAll();
-		TrekV2 day = object.getById(listeTreks.get(0).getId());
+		List<Day> listeDays = object.getAll();
+		Day day = object.getById(listeDays.get(0).getId());
 		Assert.assertNotNull(day);
-		Assert.assertEquals(listeTreks.get(0).getId(), day.getId());
+		Assert.assertEquals(listeDays.get(0).getId(), day.getId());
 
-		TrekV2 day2 = object.getById(listeTreks.get(0).getId() + 1);
+		Day day2 = object.getById(listeDays.get(0).getId() + 1);
 		Assert.assertNotNull(day2);
-		Assert.assertNotEquals(listeTreks.get(0).getId(), day2.getId());
+		Assert.assertNotEquals(listeDays.get(0).getId(), day2.getId());
 	}
 
 	@Test
 	@Transactional
-	public void testListTreks() {
-		List<TrekV2> listTreks = object.getAll();
-		Assert.assertNotNull(listTreks);
+	public void testListDays() {
+		List<Day> listDays = object.getAll();
+		Assert.assertNotNull(listDays);
 	}
 
 	@Test
 	@Transactional
 	public void testInsert() {
 		int numberBefore = object.getAll().size();
-		TrekV2 trekA = new TrekV2();
-		trekA.setName(ConstanteTest.TREK_TEST_NAME_1);
-		trekA.setLocation(ConstanteTest.TREK_TEST_LOCATION_1);
-		object.save(trekA);
+		object.save(ConstanteTest.getDay());
 		Assert.assertEquals(++numberBefore, object.getAll().size());
 	}
 
@@ -79,20 +76,19 @@ public class TrekV3BOTest {
 
 		// Persistant
 		double valeurNumberA = Math.random();
-		TrekV2 trekA = object.getAll().get(0);
-		trekA.setName(String.valueOf(valeurNumberA));
-		TrekV2 trekSave = object.save(trekA);
-		Assert.assertEquals(String.valueOf(valeurNumberA), object.getById(trekSave.getId()).getName());
+		Day dayA = object.getAll().get(0);
+		dayA.setNumber(String.valueOf(valeurNumberA));
+		Day daySave = object.save(dayA);
+		Assert.assertEquals(String.valueOf(valeurNumberA), object.getById(daySave.getId()).getNumber());
 
 		// Détaché
 		double valeurNumberB = Math.random();
-		TrekV2 trekB = new TrekV2();
-		trekB.setId(ConstanteTest.TREK_TEST_ID_2);
-		trekB.setName(String.valueOf(valeurNumberB));
-		trekB.setLocation(ConstanteTest.TREK_TEST_LOCATION_2);
-		trekSave = object.save(trekB);
-		Assert.assertEquals(String.valueOf(valeurNumberB), object.getById(trekSave.getId()).getName());
+		Day dayB = new Day();
+		dayB.setId(ConstanteTest.DAY_TEST_ID_2);
+		dayB.setNumber(String.valueOf(valeurNumberB));
+		dayB.setTrek(ConstanteTest.getTrek());
+		daySave = object.save(dayB);
+		Assert.assertEquals(String.valueOf(valeurNumberB), object.getById(daySave.getId()).getNumber());
 		Assert.assertEquals(numberBefore, object.getAll().size());
 	}
-
 }

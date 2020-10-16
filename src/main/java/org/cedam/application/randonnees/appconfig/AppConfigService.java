@@ -1,4 +1,4 @@
-package org.cedam.application.randonnees;
+package org.cedam.application.randonnees.appconfig;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;

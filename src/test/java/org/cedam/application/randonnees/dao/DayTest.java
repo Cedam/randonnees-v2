@@ -3,8 +3,8 @@ package org.cedam.application.randonnees.dao;
 import java.util.List;
 import java.util.Optional;
 
-import org.cedam.application.randonnees.AppConfigDao;
-import org.cedam.application.randonnees.entity.DayV2;
+import org.cedam.application.randonnees.appconfig.AppConfigDao;
+import org.cedam.application.randonnees.entity.Day;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -26,7 +26,7 @@ public class DayTest {
 	
 	
 	@Autowired
-	private DayV2Dao object;
+	private DayDao object;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -47,7 +47,7 @@ public class DayTest {
 	@Test
 	@Transactional
 	public void SaveTest() {
-		DayV2 dayResult = object.save(ConstanteTest.getDay());
+		Day dayResult = object.save(ConstanteTest.getDay());
 		Assert.assertTrue(dayResult!=null);
 		Assert.assertTrue(dayResult.getId()>0);
 	}
@@ -56,13 +56,13 @@ public class DayTest {
 	@Transactional
 	public void FindTest() {
 	
-		// Find a customer by ID
-		Optional<DayV2> result = object.findById(ConstanteTest.DAY_TEST_ID_1);
+		// Find a Day by ID
+		Optional<Day> result = object.findById(ConstanteTest.DAY_TEST_ID_1);
 		Assert.assertTrue(!result.isEmpty());	 
 		Assert.assertTrue(result.isPresent());	 
 		
-		// Find customers by last name
-		List<DayV2> result2 = object.findByNumber(ConstanteTest.DAY_TEST_NUMBER_1);
+		// Find Day by last number
+		List<Day> result2 = object.findByNumber(ConstanteTest.DAY_TEST_NUMBER_1);
 		Assert.assertTrue(!result2.isEmpty());	 
 		Assert.assertTrue(result2.size()>0);		
 		

@@ -1,7 +1,7 @@
 package org.cedam.application.randonnees.service.controler;
 
-import org.cedam.application.randonnees.AppConfigService;
-import org.cedam.application.randonnees.entityV6.Trek;
+import org.cedam.application.randonnees.appconfig.AppConfigService;
+import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.controller.TrekController;
 import org.junit.After;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package org.cedam.application.randonnees;
+package org.cedam.application.randonnees.appconfig;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -10,8 +10,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
 @Configuration
-//@Import(value = { org.cedam.application.randonnees.entity.config.AppConfig.class })
-//@ContextConfiguration(classes = org.cedam.application.randonnees.entity.config.AppConfig.class)
+//@Import(value = { org.cedam.application.randonnees.appconfig.AppConfigEntity.class })
+//@ContextConfiguration(classes = org.cedam.application.randonnees.appconfig.AppConfigEntity.class)
 @EnableJpaRepositories(basePackages = {"org.cedam.application.randonnees"})
 @ComponentScan(basePackages = {"org.cedam.application.randonnees"})
 //@ComponentScan(basePackages = {"org.cedam.application.randonnees.dao", "org.cedam.application.randonnees.entity"})
