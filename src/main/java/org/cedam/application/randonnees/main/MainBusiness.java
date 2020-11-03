@@ -12,8 +12,8 @@ public class MainBusiness {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfigBusiness.class);
 
-		TrekBusiness trekBusiness = (TrekBusiness) appContext.getBean("trekBusiness");
-		DayBusiness dayBusiness = (DayBusiness) appContext.getBean("dayBusiness");
+		TrekBusiness trekBusiness = (TrekBusiness) appContext.getBean(TrekBusiness.class);
+		DayBusiness dayBusiness = (DayBusiness) appContext.getBean(DayBusiness.class);
 		
 		Trek trek = trekBusiness.getAll().iterator().next();
 		Day day = dayBusiness.getById(1L);

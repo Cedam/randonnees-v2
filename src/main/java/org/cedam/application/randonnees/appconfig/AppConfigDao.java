@@ -5,16 +5,15 @@ import javax.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
 @Configuration
-//@Import(value = { org.cedam.application.randonnees.appconfig.AppConfigEntity.class })
-//@ContextConfiguration(classes = org.cedam.application.randonnees.appconfig.AppConfigEntity.class)
-@EnableJpaRepositories(basePackages = {"org.cedam.application.randonnees"})
-@ComponentScan(basePackages = {"org.cedam.application.randonnees"})
-//@ComponentScan(basePackages = {"org.cedam.application.randonnees.dao", "org.cedam.application.randonnees.entity"})
+@Import(AppConfigEntity.class)
+@EnableJpaRepositories(basePackages = {"org.cedam.application.randonnees.dao"})
+@ComponentScan(basePackages = {"org.cedam.application.randonnees.dao"})
 public class AppConfigDao {
 	
 	@Bean
@@ -28,8 +27,7 @@ public class AppConfigDao {
 	@Bean
 	public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactory);
-		
+		transactionManager.setEntityManagerFactory(entityManagerFactory);		
 		return transactionManager;
 	}	
 }

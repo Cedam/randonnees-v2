@@ -17,11 +17,11 @@ public class MainDao {
 		//AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfigDao.class);
 
-		TrekDao trekDao = (TrekDao) appContext.getBean("trekDao");
-		DayDao dayDao = (DayDao) appContext.getBean("dayDao");
+		TrekDao trekDao = (TrekDao) appContext.getBean(TrekDao.class);
+		DayDao dayDao = (DayDao) appContext.getBean(DayDao.class);
 		
-		dayTest(dayDao);
 		TrekTest(trekDao);
+		dayTest(dayDao);
 		
 		appContext.close();
 	}
@@ -30,7 +30,10 @@ public class MainDao {
 	public static boolean dayTest(DayDao dayDao) {
 		// Save a new customer
 		Day newDay = new Day();
-		newDay.setNumber("number");		
+		newDay.setNumber("number");	
+		Trek trek = new Trek();
+		trek.setId(1);
+		newDay.setTrek(trek);
 		dayDao.save(newDay);
 		
 		// Find a customer by ID
