@@ -22,5 +22,10 @@ public class MainBusiness {
 		
 		appContext.close();
 	}
+	
+	public static void PourTest(String[] args) {
+		String a = "a";
+		System.out.println(a);		
+	}
 
 }

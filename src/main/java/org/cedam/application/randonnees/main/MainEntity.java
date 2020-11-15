@@ -18,4 +18,9 @@ public class MainEntity {
 		Trek trek = (Trek) appContext.getBean(Trek.class);
 		trek.getId();
 	}
+	
+	public static void PourTest(String[] args) {
+		String a = "a";
+		System.out.println(a);		
+	}
 }

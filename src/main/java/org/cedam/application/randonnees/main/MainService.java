@@ -13,7 +13,8 @@ public class MainService extends SpringBootServletInitializer {
 	}
 
 	public static void PourTest(String[] args) {
-	
+		String a = "a";
+		System.out.println(a);		
 	}
 	
 }

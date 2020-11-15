@@ -26,6 +26,10 @@ public class MainDao {
 		appContext.close();
 	}
 
+	public static void PourTest(String[] args) {
+		String a = "a";
+		System.out.println(a);		
+	}
 	
 	public static boolean dayTest(DayDao dayDao) {
 		// Save a new customer
