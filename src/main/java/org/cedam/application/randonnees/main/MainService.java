@@ -12,4 +12,8 @@ public class MainService extends SpringBootServletInitializer {
 		SpringApplication.run(AppConfigService.class, args);
 	}
 
+	public static void PourTest(String[] args) {
+	
+	}
+	
 }

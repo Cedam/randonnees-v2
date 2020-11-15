@@ -18,7 +18,7 @@ public class MainServiceTest {
 		@Test
 		@Transactional
 		public void testGetById() {
-			MainService.main(null);
+			MainService.PourTest(null);
 		}
 		
 		
