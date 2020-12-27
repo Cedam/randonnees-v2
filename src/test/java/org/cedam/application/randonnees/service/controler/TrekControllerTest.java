@@ -50,7 +50,7 @@ public class TrekControllerTest {
 	
 	@Test
 	public void testTest() {
-		Assert.assertEquals("Futur application randonnées : trek", trekController.test());
+		Assert.assertEquals("Futur application randonnées : trek.", trekController.test());
 	}
 
 }
