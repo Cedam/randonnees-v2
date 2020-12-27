@@ -35,7 +35,7 @@ public class TrekController {
 	@GetMapping("/trek")
 	@ResponseBody
 	public String test() {
-		return "Futur application randonnées : trek";
+		return "Futur application randonnées : trek.";
 	}
 
 }

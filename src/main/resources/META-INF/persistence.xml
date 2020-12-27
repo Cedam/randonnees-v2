@@ -7,7 +7,7 @@
 	<persistence-unit name="BddRandonnee">
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/randonnees" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3307/randonnees" />
 			<property name="javax.persistence.jdbc.user" value="AdminDCO" />
 			<property name="javax.persistence.jdbc.password" value="AdminDCO" />
 			<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> --> <!-- TODO CORRECTION BDD -->

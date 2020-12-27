@@ -5,7 +5,7 @@
 	<groupId>org.cedam.application.randonnees</groupId>
 	<artifactId>randonnees-v2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<description>Projet un module 'Randonnees'</description>
 	<name>randonnees-v2</name>
 
