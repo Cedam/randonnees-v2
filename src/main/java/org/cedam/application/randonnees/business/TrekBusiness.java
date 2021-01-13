@@ -21,13 +21,18 @@ public class TrekBusiness {
 	private DayBusiness dayBusiness;
 
 	public List<Trek> getAll() {
-		List<Trek> result = new ArrayList<Trek>();
+		List<Trek> result = new ArrayList<>();
 		trekDao.findAll().forEach(result::add);
 		return result;
 	}
 
 	public Trek getById(Long id) {
-		return trekDao.findById(id).get();
+		Optional<Trek> value = trekDao.findById(id);
+		if (value.isPresent()) {
+			return value.get();
+		}
+		return null;
+//		return trekDao.findById(id).get();
 	}
 
 	public Trek save(Trek trek) {

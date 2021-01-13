@@ -3,6 +3,8 @@ package org.cedam.application.randonnees.service.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.cedam.application.randonnees.dto.TrekDto;
+import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,8 +30,8 @@ public class TrekController {
 
 	@GetMapping("/trek/save")
 	@ResponseBody
-	public Trek save(Trek trek) {
-		return trek;
+	public Trek save(TrekDto trek) {
+		return new Trek();
 	}
 	
 	@GetMapping("/trek")

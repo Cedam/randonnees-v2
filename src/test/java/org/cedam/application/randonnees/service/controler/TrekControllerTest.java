@@ -1,6 +1,7 @@
 package org.cedam.application.randonnees.service.controler;
 
 import org.cedam.application.randonnees.appconfig.AppConfigService;
+import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.controller.TrekController;
 import org.junit.After;
@@ -42,9 +43,9 @@ public class TrekControllerTest {
 	@Test
 	public void save() {
 		int idTrek = 0;
-		Trek trek = new Trek();
-		trek.setId(idTrek);
-		trek = trekController.save(trek);
+		TrekDto trekDto = new TrekDto();
+		trekDto.setId(idTrek);
+		Trek trek = trekController.save(trekDto);
 		Assert.assertEquals(idTrek, trek.getId());
 	}
 	

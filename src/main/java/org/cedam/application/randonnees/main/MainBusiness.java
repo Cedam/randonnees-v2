@@ -11,7 +11,8 @@ public class MainBusiness {
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfigBusiness.class);
-
+		//PourTest(args);
+		
 		TrekBusiness trekBusiness = (TrekBusiness) appContext.getBean(TrekBusiness.class);
 		DayBusiness dayBusiness = (DayBusiness) appContext.getBean(DayBusiness.class);
 		
@@ -25,7 +26,7 @@ public class MainBusiness {
 	
 	public static void PourTest(String[] args) {
 		String a = "a";
-		System.out.println(a);		
+		System.out.println(a);	
 	}
 
 }

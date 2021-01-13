@@ -23,7 +23,12 @@ public class DayBusiness {
 	}
 	
 	public Day getById(Long id) {
-		return dayDao.findById(id).get();
+		Optional<Day> value = dayDao.findById(id);
+		if (value.isPresent()) {
+			return value.get();
+		}
+		return null;
+		//return dayDao.findById(id).get();
 	}
 	
 	public Day save(Day day) {

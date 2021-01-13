@@ -3,6 +3,7 @@ package org.cedam.application.randonnees.service.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.entity.Day;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,8 +29,8 @@ public class DayController {
 
 	@GetMapping("/day/save")
 	@ResponseBody
-	public Day save(Day day) {
-		return day;
+	public Day save(DayDto dayDto) {
+		return new Day();
 	}
 	
 	@GetMapping("/day")
