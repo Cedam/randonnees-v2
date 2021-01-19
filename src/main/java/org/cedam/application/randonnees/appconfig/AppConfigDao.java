@@ -12,22 +12,21 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
 @Configuration
 @Import(AppConfigEntity.class)
-@EnableJpaRepositories(basePackages = {"org.cedam.application.randonnees.dao"})
-@ComponentScan(basePackages = {"org.cedam.application.randonnees.dao"})
+@EnableJpaRepositories(basePackages = { "org.cedam.application.randonnees.dao" })
+@ComponentScan(basePackages = { "org.cedam.application.randonnees.dao" })
 public class AppConfigDao {
-	
+
 	@Bean
 	public LocalEntityManagerFactoryBean entityManagerFactory() {
 		LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
-		//factoryBean.setPersistenceUnitName("TestDB");
 		factoryBean.setPersistenceUnitName("BddRandonnee");
 		return factoryBean;
 	}
-	
+
 	@Bean
 	public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactory);		
+		transactionManager.setEntityManagerFactory(entityManagerFactory);
 		return transactionManager;
-	}	
+	}
 }

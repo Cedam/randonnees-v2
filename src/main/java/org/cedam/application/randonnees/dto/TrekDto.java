@@ -54,7 +54,5 @@ public class TrekDto {
 	public void setDays(List<DayDto> daysDto) {
 		this.daysDto = daysDto;
 	}
-	
-	
-	
+
 }

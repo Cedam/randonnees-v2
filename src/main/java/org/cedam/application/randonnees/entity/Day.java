@@ -50,5 +50,4 @@ public class Day {
 		this.trek = trek;
 	}
 
-	
 }

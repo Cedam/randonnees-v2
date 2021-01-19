@@ -1,9 +1,7 @@
 package org.cedam.application.randonnees.dto;
 
-import org.cedam.application.randonnees.entity.Trek;
-
 public class DayDto {
-	
+
 	private long id;
 
 	private String number;
@@ -33,7 +31,5 @@ public class DayDto {
 	public void setTrek(TrekDto trekDto) {
 		this.trekDto = trekDto;
 	}
-	
-	
-	
+
 }

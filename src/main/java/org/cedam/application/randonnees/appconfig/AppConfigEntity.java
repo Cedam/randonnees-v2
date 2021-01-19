@@ -8,18 +8,17 @@ import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScans(value = { @ComponentScan("org.cedam.application.randonnees.entity")})
+@ComponentScans(value = { @ComponentScan("org.cedam.application.randonnees.entity") })
 public class AppConfigEntity {
 
-	@Bean(name ="day")
+	@Bean(name = "day")
 	public Day getDay() {
 		return new Day();
 	}
-	
-	@Bean(name ="trek")
+
+	@Bean(name = "trek")
 	public Trek getTtek() {
 		return new Trek();
 	}
 
-	
 }

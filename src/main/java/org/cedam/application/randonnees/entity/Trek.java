@@ -31,7 +31,7 @@ public class Trek {
 	private String location;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trek")
-	private List<Day> days = new ArrayList<Day>();
+	private List<Day> days = new ArrayList<>();
 
 	public long getId() {
 		return id;
