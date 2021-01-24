@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class TrekControllerTest {
 
 	@Autowired
-	private TrekController trekController;
+	private TrekController object;
 
 	@Before
 	public void setUp() throws Exception {
@@ -32,13 +32,13 @@ public class TrekControllerTest {
 
 	@Test
 	public void getAllTest() {
-		Assert.assertNotNull(trekController.getAll());
+		Assert.assertNotNull(object.getAll());
 	}
 
 	@Test
 	public void getByIdTest() {
 		int idTrek = 0;
-		Trek trek = trekController.getById(idTrek);
+		Trek trek = object.getById(idTrek);
 		Assert.assertEquals(idTrek, trek.getId());
 	}
 
@@ -47,13 +47,20 @@ public class TrekControllerTest {
 		int idTrek = 0;
 		TrekDto trekDto = new TrekDto();
 		trekDto.setId(idTrek);
-		Trek trek = trekController.save(trekDto);
+		Trek trek = object.save(trekDto);
 		Assert.assertEquals(idTrek, trek.getId());
+		
+		try {
+			Trek trek2 = object.save(null);
+			Assert.assertNull(trek2);
+		} catch (Exception e) {
+		}	
+		
 	}
 
 	@Test
 	public void testTest() {
-		Assert.assertEquals("Futur application randonnées : trek.", trekController.test());
+		Assert.assertEquals("Futur application randonnées : trek.", object.test());
 	}
 
 }
