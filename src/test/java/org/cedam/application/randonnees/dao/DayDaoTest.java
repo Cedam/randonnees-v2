@@ -1,12 +1,11 @@
 package org.cedam.application.randonnees.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.cedam.application.randonnees.appconfig.AppConfigDao;
 import org.cedam.application.randonnees.entity.Day;
-import org.cedam.application.randonnees.entity.Trek;
+import org.cedam.application.randonnees.test.mock.ConstanteTest;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -23,13 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigDao.class)
 @SpringBootTest
-public class TrekTest {
+public class DayDaoTest {
 
 	@Autowired
-	private TrekDao object;
-
-	@Autowired
-	private DayDao dayDao;
+	private DayDao object;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -49,33 +45,23 @@ public class TrekTest {
 
 	@Test
 	@Transactional
-	public void SaveTest() {
-		Trek trek = ConstanteTest.getTrek2();
-		Trek trekResult = object.save(trek);
-		Assert.assertTrue(trekResult != null);
-		Assert.assertTrue(trekResult.getId() > 0);
-
-		Day day = dayDao.findAll().iterator().next();
-
-		List<Day> listDays = new ArrayList<Day>();
-		listDays.add(day);
-		trek.setDays(listDays);
-		trekResult = object.save(trek);
-		Assert.assertTrue(trekResult != null);
-		Assert.assertTrue(trekResult.getId() > 0);
+	public void saveTest() {
+		Day dayResult = object.save(ConstanteTest.getDay());
+		Assert.assertTrue(dayResult != null);
+		Assert.assertTrue(dayResult.getId() > 0);
 	}
 
 	@Test
 	@Transactional
-	public void FindTest() {
+	public void dindTest() {
 
-		// Find a Trek by ID
-		Optional<Trek> result = object.findById(ConstanteTest.TREK_TEST_ID_1);
+		// Find a Day by ID
+		Optional<Day> result = object.findById(ConstanteTest.DAY_TEST_ID_1);
 		Assert.assertTrue(!result.isEmpty());
 		Assert.assertTrue(result.isPresent());
 
-		// Find Trek by name
-		List<Trek> result2 = object.findByName(ConstanteTest.TREK_TEST_NAME_1);
+		// Find Day by last number
+		List<Day> result2 = object.findByNumber(ConstanteTest.DAY_TEST_NUMBER_1);
 		Assert.assertTrue(!result2.isEmpty());
 		Assert.assertTrue(result2.size() > 0);
 

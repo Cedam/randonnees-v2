@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cedam.application.randonnees.appconfig.AppConfigBusiness;
 import org.cedam.application.randonnees.entity.Day;
+import org.cedam.application.randonnees.test.mock.ConstanteTest;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
