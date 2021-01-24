@@ -1,10 +1,6 @@
-package org.cedam.application.randonnees.dao;
-
-import java.util.List;
-import java.util.Optional;
+package org.cedam.application.randonnees.dto;
 
 import org.cedam.application.randonnees.appconfig.AppConfigDao;
-import org.cedam.application.randonnees.entity.Day;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -12,7 +8,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,10 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigDao.class)
 @SpringBootTest
-public class DayTest {
-
-	@Autowired
-	private DayDao object;
+public class DayDtoTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -44,26 +36,19 @@ public class DayTest {
 
 	@Test
 	@Transactional
-	public void SaveTest() {
-		Day dayResult = object.save(ConstanteTest.getDay());
-		Assert.assertTrue(dayResult != null);
-		Assert.assertTrue(dayResult.getId() > 0);
-	}
+	public void Test() {
+		var id = 1;
+		var number = "number";
+		var trekDto = new TrekDto();
 
-	@Test
-	@Transactional
-	public void FindTest() {
+		var dayDto = new DayDto();
+		dayDto.setId(id);
+		dayDto.setNumber(number);
+		dayDto.setTrek(trekDto);
 
-		// Find a Day by ID
-		Optional<Day> result = object.findById(ConstanteTest.DAY_TEST_ID_1);
-		Assert.assertTrue(!result.isEmpty());
-		Assert.assertTrue(result.isPresent());
-
-		// Find Day by last number
-		List<Day> result2 = object.findByNumber(ConstanteTest.DAY_TEST_NUMBER_1);
-		Assert.assertTrue(!result2.isEmpty());
-		Assert.assertTrue(result2.size() > 0);
-
+		Assert.assertEquals(id, dayDto.getId());
+		Assert.assertEquals(number, dayDto.getNumber());
+		Assert.assertEquals(trekDto, dayDto.getTrek());
 	}
 
 }
