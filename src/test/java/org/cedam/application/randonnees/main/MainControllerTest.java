@@ -1,7 +1,6 @@
 package org.cedam.application.randonnees.main;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,11 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = AppConfigController.class)
 @SpringBootTest
 public class MainControllerTest {
-	
+
 	@Test
 	@Transactional
-	public void todo() {
-		Assert.assertTrue(true);
+	public void mainTest() {
+		MainController.main(null);
 	}
-	
+
 }

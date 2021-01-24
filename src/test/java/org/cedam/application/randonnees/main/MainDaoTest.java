@@ -1,7 +1,6 @@
 package org.cedam.application.randonnees.main;
 
 import org.cedam.application.randonnees.appconfig.AppConfigDao;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ public class MainDaoTest {
 
 	@Test
 	@Transactional
-	public void todo() {
-		Assert.assertTrue(true);
+	public void mainTest() {
+		MainDao.main(null);
 	}
 }
