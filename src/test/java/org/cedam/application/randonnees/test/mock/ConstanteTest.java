@@ -4,7 +4,9 @@ import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
+import org.junit.Ignore;
 
+@Ignore
 public class ConstanteTest {
 
 	public static Trek getTrek() {

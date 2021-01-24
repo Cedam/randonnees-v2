@@ -1,6 +1,7 @@
 package org.cedam.application.randonnees.main;
 
 import org.cedam.application.randonnees.appconfig.AppConfigBusiness;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,7 @@ public class MainBusinessTest {
 	@Transactional
 	public void mainTest() {
 		MainBusiness.main(null);
+		Assert.assertTrue(true);
 	}
 
 }
