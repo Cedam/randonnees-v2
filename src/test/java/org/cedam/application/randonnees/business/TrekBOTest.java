@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.cedam.application.randonnees.appconfig.AppConfigBusiness;
 import org.cedam.application.randonnees.entity.Trek;
-import org.cedam.application.randonnees.test.mock.ConstanteTest;
+import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -67,8 +67,8 @@ public class TrekBOTest {
 	public void testInsert() {
 		int numberBefore = object.getAll().size();
 		Trek trekA = new Trek();
-		trekA.setName(ConstanteTest.TREK_TEST_NAME_1);
-		trekA.setLocation(ConstanteTest.TREK_TEST_LOCATION_1);
+		trekA.setName(Constante.TREK_TEST_NAME_1);
+		trekA.setLocation(Constante.TREK_TEST_LOCATION_1);
 		object.save(trekA);
 		Assert.assertEquals(++numberBefore, object.getAll().size());
 	}
@@ -88,9 +88,9 @@ public class TrekBOTest {
 		// Détaché
 		double valeurNumberB = Math.random();
 		Trek trekB = new Trek();
-		trekB.setId(ConstanteTest.TREK_TEST_ID_2);
+		trekB.setId(Constante.TREK_TEST_ID_2);
 		trekB.setName(String.valueOf(valeurNumberB));
-		trekB.setLocation(ConstanteTest.TREK_TEST_LOCATION_2);
+		trekB.setLocation(Constante.TREK_TEST_LOCATION_2);
 		trekSave = object.save(trekB);
 		Assert.assertEquals(String.valueOf(valeurNumberB), object.getById(trekSave.getId()).getName());
 		Assert.assertEquals(numberBefore, object.getAll().size());

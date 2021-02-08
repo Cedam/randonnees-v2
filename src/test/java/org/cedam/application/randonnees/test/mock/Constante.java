@@ -7,7 +7,7 @@ import org.cedam.application.randonnees.entity.Trek;
 import org.junit.Ignore;
 
 @Ignore
-public class ConstanteTest {
+public class Constante {
 
 	public static Trek getTrek() {
 		var trek = new Trek();

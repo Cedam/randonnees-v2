@@ -1,7 +1,6 @@
 package org.cedam.application.randonnees.controler;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;
-import org.cedam.application.randonnees.controller.DayController;
 import org.cedam.application.randonnees.controller.DefaultController;
 import org.junit.After;
 import org.junit.Assert;

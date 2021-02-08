@@ -5,7 +5,7 @@ import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
-import org.cedam.application.randonnees.test.mock.ConstanteTest;
+import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -48,7 +48,7 @@ public class MapperFactoryTest {
 	@Transactional
 	public void convertDayToDayDtoTest() {
 		try {
-			Day source = ConstanteTest.getDay();
+			Day source = Constante.getDay();
 			DayDto destination = object.convertDayToDayDto(source);
 			Assert.assertEquals(source.getId(), destination.getId());
 			Assert.assertEquals(source.getNumber(), destination.getNumber());
@@ -62,7 +62,7 @@ public class MapperFactoryTest {
 	@Transactional
 	public void convertDayDtoToDayTest() {
 		try {
-			DayDto source = ConstanteTest.getDayDto();
+			DayDto source = Constante.getDayDto();
 			Day destination = object.convertDayDtoToDay(source);
 			Assert.assertEquals(source.getId(), destination.getId());
 			Assert.assertEquals(source.getNumber(), destination.getNumber());
@@ -76,7 +76,7 @@ public class MapperFactoryTest {
 	@Transactional
 	public void convertTrekToTrekDtoTest() {
 		try {
-			Trek source = ConstanteTest.getTrek();
+			Trek source = Constante.getTrek();
 			TrekDto destination = object.convertTrekToTrekDto(source);
 			Assert.assertEquals(source.getId(), destination.getId());
 			Assert.assertEquals(source.getName(), destination.getName());
@@ -92,7 +92,7 @@ public class MapperFactoryTest {
 	@Transactional
 	public void convertTrekDtoToTrekTest() {
 		try {
-			TrekDto source = ConstanteTest.getTrekDto();
+			TrekDto source = Constante.getTrekDto();
 			Trek destination = object.convertTrekDtoToTrek(source);
 			Assert.assertEquals(source.getId(), destination.getId());
 			Assert.assertEquals(source.getName(), destination.getName());

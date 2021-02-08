@@ -223,27 +223,4 @@
 		</plugins>
 	</build>
 
-	<distributionManagement>
-		<!-- Publish the versioned releases here -->
-		<!-- <repository> -->
-		<!-- <id>nexus-cedam</id> -->
-		<!-- <name>maven-releases</name> -->
-		<!-- <url>http://localhost:8081/repository/maven-releases/</url> -->
-		<!-- </repository> -->
-
-		<!-- Publish the versioned releases here -->
-		<!-- <snapshotRepository> -->
-		<!-- <id>nexus-cedam</id> -->
-		<!-- <name>maven-snapshots</name> -->
-		<!-- <url>http://localhost:8081/repository/maven-snapshots/</url> -->
-		<!-- </snapshotRepository> -->
-	</distributionManagement>
-
-	<!-- download artifacts from this repo -->
-	<!--<repositories> <repository> <id>nexus-cedam</id> <name>maven-public</name> 
-		<url>http://localhost:8081/repository/maven-public/</url> <releases> <enabled>true</enabled> 
-		</releases> <snapshots> <enabled>true</enabled> </snapshots> </repository> 
-		</repositories> -->
-
-
 </project>

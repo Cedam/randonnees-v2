@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.cedam.application.randonnees.appconfig.AppConfigBusiness;
 import org.cedam.application.randonnees.entity.Day;
-import org.cedam.application.randonnees.test.mock.ConstanteTest;
+import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -66,7 +66,7 @@ public class DayBOTest {
 	@Transactional
 	public void testInsert() {
 		int numberBefore = object.getAll().size();
-		object.save(ConstanteTest.getDay());
+		object.save(Constante.getDay());
 		Assert.assertEquals(++numberBefore, object.getAll().size());
 	}
 
@@ -85,9 +85,9 @@ public class DayBOTest {
 		// Détaché
 		double valeurNumberB = Math.random();
 		Day dayB = new Day();
-		dayB.setId(ConstanteTest.DAY_TEST_ID_2);
+		dayB.setId(Constante.DAY_TEST_ID_2);
 		dayB.setNumber(String.valueOf(valeurNumberB));
-		dayB.setTrek(ConstanteTest.getTrek());
+		dayB.setTrek(Constante.getTrek());
 		daySave = object.save(dayB);
 		Assert.assertEquals(String.valueOf(valeurNumberB), object.getById(daySave.getId()).getNumber());
 		Assert.assertEquals(numberBefore, object.getAll().size());

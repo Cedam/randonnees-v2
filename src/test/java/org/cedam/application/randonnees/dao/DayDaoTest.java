@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.cedam.application.randonnees.appconfig.AppConfigDao;
 import org.cedam.application.randonnees.entity.Day;
-import org.cedam.application.randonnees.test.mock.ConstanteTest;
+import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -46,7 +46,7 @@ public class DayDaoTest {
 	@Test
 	@Transactional
 	public void saveTest() {
-		Day dayResult = object.save(ConstanteTest.getDay());
+		Day dayResult = object.save(Constante.getDay());
 		Assert.assertTrue(dayResult != null);
 		Assert.assertTrue(dayResult.getId() > 0);
 	}
@@ -56,12 +56,12 @@ public class DayDaoTest {
 	public void dindTest() {
 
 		// Find a Day by ID
-		Optional<Day> result = object.findById(ConstanteTest.DAY_TEST_ID_1);
+		Optional<Day> result = object.findById(Constante.DAY_TEST_ID_1);
 		Assert.assertTrue(!result.isEmpty());
 		Assert.assertTrue(result.isPresent());
 
 		// Find Day by last number
-		List<Day> result2 = object.findByNumber(ConstanteTest.DAY_TEST_NUMBER_1);
+		List<Day> result2 = object.findByNumber(Constante.DAY_TEST_NUMBER_1);
 		Assert.assertTrue(!result2.isEmpty());
 		Assert.assertTrue(result2.size() > 0);
 

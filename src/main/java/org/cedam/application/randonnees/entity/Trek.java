@@ -14,12 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TREK")
-public class Trek {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private long id;
+public class Trek extends SuperEntity {
 
 	@Column(name = "NAME", nullable = false, unique = false)
 	private String name;
@@ -32,14 +27,6 @@ public class Trek {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trek")
 	private List<Day> days = new ArrayList<>();
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

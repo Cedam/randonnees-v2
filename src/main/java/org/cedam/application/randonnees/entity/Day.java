@@ -12,12 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "DAY")
-public class Day {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private long id;
+public class Day extends SuperEntity {
 
 	@Column(name = "NUMBER", nullable = false, unique = false)
 	private String number;
@@ -25,14 +20,6 @@ public class Day {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "TREK_ID")
 	private Trek trek;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getNumber() {
 		return number;
