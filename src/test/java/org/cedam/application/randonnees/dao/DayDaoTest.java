@@ -31,7 +31,7 @@ public class DayDaoTest {
 
 	@Test
 	@Transactional
-	public void dindTest() {
+	public void findTest() {
 
 		// Find a Day by ID
 		Optional<Day> result = object.findById(Constante.DAY_TEST_ID_1);

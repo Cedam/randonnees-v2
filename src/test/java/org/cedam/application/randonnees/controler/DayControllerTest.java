@@ -26,7 +26,7 @@ public class DayControllerTest {
 	}
 
 	@Test
-	public void save() {
+	public void saveTest() {
 		int idDay = 0;
 		DayDto dayDto = new DayDto();
 		dayDto.setId(idDay);

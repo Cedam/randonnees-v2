@@ -30,7 +30,7 @@ public class TrekControllerTest {
 	}
 
 	@Test
-	public void save() {
+	public void saveTest() {
 		int idTrek = 0;
 		TrekDto trekDto = new TrekDto();
 		trekDto.setId(idTrek);

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DayController {
 
 	private static final Logger logger = LogManager.getLogger(DayController.class);
-	
+
 	@Autowired
 	MapperFactory mapperFactory;
 
@@ -40,10 +40,12 @@ public class DayController {
 	@ResponseBody
 	public Day save(DayDto dayDto) {
 		Day day = null;
-		try {
-			day = mapperFactory.convertDayDtoToDay(dayDto);
-		} catch (Exception e) {
-			logger.error("DayController.save", e);
+		if (dayDto != null) {
+			try {
+				day = mapperFactory.convertDayDtoToDay(dayDto);
+			} catch (Exception e) {
+				logger.error("DayController.save", e);
+			}
 		}
 		return day;
 	}

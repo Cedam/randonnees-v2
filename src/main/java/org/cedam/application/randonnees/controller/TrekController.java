@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TrekController {
 
 	private static final Logger logger = LogManager.getLogger(TrekController.class);
-	
+
 	@Autowired
 	MapperFactory mapperFactory;
 
@@ -40,10 +40,12 @@ public class TrekController {
 	@ResponseBody
 	public Trek save(TrekDto trekDto) {
 		Trek trek = null;
-		try {
-			trek = mapperFactory.convertTrekDtoToTrek(trekDto);
-		} catch (Exception e) {
-			logger.error("TrekController.save", e);
+		if (trekDto != null) {
+			try {
+				trek = mapperFactory.convertTrekDtoToTrek(trekDto);
+			} catch (Exception e) {
+				logger.error("TrekController.save", e);
+			}
 		}
 		return trek;
 	}
