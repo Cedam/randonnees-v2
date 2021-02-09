@@ -1,15 +1,12 @@
 package org.cedam.application.randonnees.main;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.cedam.application.randonnees.appconfig.AppConfigDao;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigDao.class)
 @SpringBootTest
 public class MainDaoTest {
@@ -18,6 +15,6 @@ public class MainDaoTest {
 	@Transactional
 	public void mainTest() {
 		MainDao.main(null);
-		Assert.assertTrue(true);
+		assertThat(true).isTrue();
 	}
 }

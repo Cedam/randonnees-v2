@@ -1,14 +1,11 @@
 package org.cedam.application.randonnees.main;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.cedam.application.randonnees.appconfig.AppConfigEntity;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigEntity.class)
 @SpringBootTest
 public class MainEntityTest {
@@ -16,7 +13,7 @@ public class MainEntityTest {
 	@Test
 	public void mainTest() {
 		MainEntity.main(null);
-		Assert.assertTrue(true);
+		assertThat(true).isTrue();
 	}
 
 }

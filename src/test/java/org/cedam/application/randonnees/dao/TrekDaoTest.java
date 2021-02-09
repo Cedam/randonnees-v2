@@ -1,4 +1,5 @@
 package org.cedam.application.randonnees.dao;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,20 +9,12 @@ import org.cedam.application.randonnees.appconfig.AppConfigDao;
 import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.test.mock.Constante;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigDao.class)
 @SpringBootTest
 public class TrekDaoTest {
@@ -32,29 +25,13 @@ public class TrekDaoTest {
 	@Autowired
 	private DayDao dayDao;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	@Transactional
 	public void SaveTest() {
 		Trek trek = Constante.getTrek2();
 		Trek trekResult = object.save(trek);
-		Assert.assertTrue(trekResult != null);
-		Assert.assertTrue(trekResult.getId() > 0);
+		assertThat(trekResult).isNotNull();
+		assertThat(trekResult.getId() > 0).isTrue();
 
 		Day day = dayDao.findAll().iterator().next();
 
@@ -62,8 +39,8 @@ public class TrekDaoTest {
 		listDays.add(day);
 		trek.setDays(listDays);
 		trekResult = object.save(trek);
-		Assert.assertTrue(trekResult != null);
-		Assert.assertTrue(trekResult.getId() > 0);
+		assertThat(trekResult).isNotNull();
+		assertThat(trekResult.getId() > 0).isTrue();
 	}
 
 	@Test
@@ -72,13 +49,13 @@ public class TrekDaoTest {
 
 		// Find a Trek by ID
 		Optional<Trek> result = object.findById(Constante.TREK_TEST_ID_1);
-		Assert.assertTrue(!result.isEmpty());
-		Assert.assertTrue(result.isPresent());
+		assertThat(!result.isEmpty()).isTrue();
+		assertThat(result.isPresent()).isTrue();
 
 		// Find Trek by name
 		List<Trek> result2 = object.findByName(Constante.TREK_TEST_NAME_1);
-		Assert.assertTrue(!result2.isEmpty());
-		Assert.assertTrue(result2.size() > 0);
+		assertThat(!result2.isEmpty()).isTrue();
+		assertThat(result2.size() > 0).isTrue();
 
 	}
 

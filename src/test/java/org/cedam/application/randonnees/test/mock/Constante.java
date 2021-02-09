@@ -4,9 +4,9 @@ import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 
-@Ignore
+@Disabled
 public class Constante {
 
 	public static Trek getTrek() {

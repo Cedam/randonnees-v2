@@ -1,15 +1,12 @@
 package org.cedam.application.randonnees.main;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.cedam.application.randonnees.appconfig.AppConfigBusiness;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigBusiness.class)
 @SpringBootTest
 public class MainBusinessTest {
@@ -18,7 +15,7 @@ public class MainBusinessTest {
 	@Transactional
 	public void mainTest() {
 		MainBusiness.main(null);
-		Assert.assertTrue(true);
+		assertThat(true).isTrue();
 	}
 
 }

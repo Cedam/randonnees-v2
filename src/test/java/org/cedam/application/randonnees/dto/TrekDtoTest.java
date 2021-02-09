@@ -1,40 +1,18 @@
 package org.cedam.application.randonnees.dto;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 
 import org.cedam.application.randonnees.appconfig.AppConfigDao;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = AppConfigDao.class)
 @SpringBootTest
 public class TrekDtoTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	@Transactional
@@ -53,12 +31,12 @@ public class TrekDtoTest {
 		trekDto.setLocation(location);
 		trekDto.setDays(daysDto);
 
-		Assert.assertEquals(id, trekDto.getId());
-		Assert.assertEquals(name, trekDto.getName());
-		Assert.assertEquals(location, trekDto.getLocation());
-		Assert.assertEquals(year, trekDto.getYear());
-		Assert.assertEquals(location, trekDto.getLocation());
-		Assert.assertEquals(daysDto, trekDto.getDays());
+		assertThat(id).isEqualTo(trekDto.getId());
+		assertThat(name).isEqualTo(trekDto.getName());
+		assertThat(location).isEqualTo(trekDto.getLocation());
+		assertThat(year).isEqualTo(trekDto.getYear());
+		assertThat(location).isEqualTo(trekDto.getLocation());
+		assertThat(daysDto).isEqualTo(trekDto.getDays());
 	}
 
 }
