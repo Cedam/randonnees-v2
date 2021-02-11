@@ -20,7 +20,6 @@ public class MapperFactory {
 		if (source != null) {
 			destination = new DayDto();
 			var mapper = (Mapper) dozerBean.getObject();
-			destination = new DayDto();
 			mapper.map(source, destination);
 		}
 		return destination;
