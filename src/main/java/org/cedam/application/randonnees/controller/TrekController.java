@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Trek;
+import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.utils.mapper.MapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,34 +21,51 @@ public class TrekController {
 	private static final Logger logger = LogManager.getLogger(TrekController.class);
 
 	@Autowired
+	private TrekService manager;
+	
+	@Autowired
 	MapperFactory mapperFactory;
 
 	@GetMapping("/trek/all")
 	@ResponseBody
-	public List<Trek> getAll() {
-		return new ArrayList<>();
+	public List<TrekDto> getAll() {
+		var treksDto = new ArrayList<TrekDto>();
+		var treks = manager.getAll();
+		treks.forEach(x -> {
+			try {
+				treksDto.add(mapperFactory.convertTrekToTrekDto(x));
+			} catch (Exception e) {
+				logger.error("DayController.getAllByTrekId", e);
+			}
+		});
+		
+		return treksDto;
 	}
 
 	@GetMapping("/trek/id")
 	@ResponseBody
-	public Trek getById(@RequestParam(value = "id", defaultValue = "0") int id) {
-		Trek trek = new Trek();
-		trek.setId(id);
-		return trek;
+	public TrekDto getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
+		Trek trek = manager.getById(id);
+		var trekDto = mapperFactory.convertTrekToTrekDto(trek);
+		return trekDto;
 	}
 
 	@GetMapping("/trek/save")
 	@ResponseBody
-	public Trek save(TrekDto trekDto) {
-		Trek trek = null;
-		if (trekDto != null) {
-			try {
-				trek = mapperFactory.convertTrekDtoToTrek(trekDto);
-			} catch (Exception e) {
-				logger.error("TrekController.save", e);
-			}
+	public TrekDto save(TrekDto trekInDto) throws Exception {
+		TrekDto trekOutDto = null;
+		if (trekInDto != null) {
+			Trek trek = manager.save(mapperFactory.convertTrekDtoToTrek(trekInDto));
+			trekOutDto = mapperFactory.convertTrekToTrekDto(trek);
 		}
-		return trek;
+		return trekOutDto;
+	}
+
+	@GetMapping("/trek/delete")
+	@ResponseBody
+	public boolean delete(@RequestParam(value = "id", defaultValue = "0") long id) {
+		 manager.delete(id);
+		 return true;
 	}
 
 	@GetMapping("/trek")

@@ -14,7 +14,7 @@ public class Day extends SuperEntity {
 	@Column(name = "NUMBER", nullable = false, unique = false)
 	private String number;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "TREK_ID")
 	private Trek trek;
 

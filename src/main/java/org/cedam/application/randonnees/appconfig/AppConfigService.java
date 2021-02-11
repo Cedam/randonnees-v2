@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @Import(AppConfigDao.class)
-@ComponentScans(value = { @ComponentScan("org.cedam.application.randonnees.business") })
-public class AppConfigBusiness {
+@ComponentScans(value = { @ComponentScan("org.cedam.application.randonnees.service") })
+public class AppConfigService {
 
 }

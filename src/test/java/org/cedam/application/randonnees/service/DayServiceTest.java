@@ -1,10 +1,11 @@
-package org.cedam.application.randonnees.business;
+package org.cedam.application.randonnees.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import org.cedam.application.randonnees.appconfig.AppConfigBusiness;
+import org.cedam.application.randonnees.appconfig.AppConfigService;
 import org.cedam.application.randonnees.entity.Day;
+import org.cedam.application.randonnees.service.DayService;
 import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-@ContextConfiguration(classes = AppConfigBusiness.class)
+@ContextConfiguration(classes = AppConfigService.class)
 @SpringBootTest
-public class DayBOTest {
+public class DayServiceTest {
 
 	@Autowired
-	private DayBusiness object;
+	private DayService object;
 
 
 	@Test

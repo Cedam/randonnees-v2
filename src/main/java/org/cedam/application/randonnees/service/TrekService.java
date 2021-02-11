@@ -1,4 +1,4 @@
-package org.cedam.application.randonnees.business;
+package org.cedam.application.randonnees.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +10,14 @@ import org.cedam.application.randonnees.entity.Trek;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("trekBusiness")
-public class TrekBusiness {
+@Service("trekService")
+public class TrekService {
 
 	@Autowired
 	private TrekDao trekDao;
 
 	@Autowired
-	private DayBusiness dayBusiness;
+	private DayService dayService;
 
 	public List<Trek> getAll() {
 		List<Trek> result = new ArrayList<>();
@@ -26,21 +26,27 @@ public class TrekBusiness {
 	}
 
 	public Trek getById(Long id) {
+		Trek trek = null;
 		Optional<Trek> value = trekDao.findById(id);
 		if (value.isPresent()) {
-			return value.get();
+			trek = value.get();
 		}
-		return null;
+		return trek;
 	}
 
 	public Trek save(Trek trek) {
-		return trekDao.save(trek);
+		var trekOut = trekDao.save(trek);
+		return trekOut;
 	}
 
 	public boolean addDay(Trek trek, Day day) {
 		day.setTrek(trek);
-		day = dayBusiness.save(day);
-		return day!=null;
+		day = dayService.save(day);
+		return day != null;
+	}
+
+	public void delete(long id) {
+		trekDao.deleteById(id);
 	}
 
 }

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@Import(AppConfigBusiness.class)
+@Import(AppConfigService.class)
 @ComponentScans(value = { @ComponentScan("org.cedam.application.randonnees.controller"),
 		@ComponentScan("org.cedam.application.randonnees.utils") })
 public class AppConfigController {

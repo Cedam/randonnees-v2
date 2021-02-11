@@ -1,10 +1,9 @@
-package org.cedam.application.randonnees.controler;
+package org.cedam.application.randonnees.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;
-import org.cedam.application.randonnees.controller.TrekController;
 import org.cedam.application.randonnees.dto.TrekDto;
-import org.cedam.application.randonnees.entity.Trek;
+import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,24 +22,32 @@ public class TrekControllerTest {
 	}
 
 	@Test
-	public void getByIdTest() {
-		int idTrek = 0;
-		Trek trek = object.getById(idTrek);
+	public void getByIdTest() throws Exception {
+		long idTrek = Constante.TREK_TEST_ID_1;
+		TrekDto trek = object.getById(idTrek);
 		assertThat(idTrek).isEqualTo(trek.getId());
 	}
 
 	@Test
-	public void saveTest() {
-		int idTrek = 0;
-		TrekDto trekDto = new TrekDto();
-		trekDto.setId(idTrek);
-		Trek trek = object.save(trekDto);
-		assertThat(idTrek).isEqualTo(trek.getId());
+	public void saveTest() throws Exception {
+		TrekDto trekInDto = new TrekDto();
+		trekInDto.setLocation(Constante.TREK_TEST_LOCATION_1);
+		trekInDto.setName(Constante.TREK_TEST_NAME_1);
+		
+		//Test insert
+		TrekDto trekOutDto = object.save(trekInDto);
+		assertThat(trekOutDto).isNotNull();
+		
+		//Test update
+		trekInDto.setId(Constante.TREK_TEST_ID_1);
+		trekOutDto = object.save(trekInDto);
+		assertThat(trekOutDto.getId()).isEqualTo(Constante.TREK_TEST_ID_1);
 		
 		try {
-			Trek trek2 = object.save(null);
-			assertThat(trek2).isNull();
+			trekOutDto = object.save(null);
+			assertThat(trekOutDto).isNull();
 		} catch (Exception e) {
+			//Normal
 		}	
 		
 	}
