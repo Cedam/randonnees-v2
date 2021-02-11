@@ -46,18 +46,15 @@ public class TrekController {
 	@ResponseBody
 	public TrekDto getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
 		Trek trek = manager.getById(id);
-		var trekDto = mapperFactory.convertTrekToTrekDto(trek);
-		return trekDto;
+		return mapperFactory.convertTrekToTrekDto(trek);
 	}
 
 	@GetMapping("/trek/save")
 	@ResponseBody
 	public TrekDto save(TrekDto trekInDto) throws Exception {
 		TrekDto trekOutDto = null;
-		if (trekInDto != null) {
 			Trek trek = manager.save(mapperFactory.convertTrekDtoToTrek(trekInDto));
 			trekOutDto = mapperFactory.convertTrekToTrekDto(trek);
-		}
 		return trekOutDto;
 	}
 

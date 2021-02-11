@@ -1,5 +1,8 @@
 package org.cedam.application.randonnees.controller;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import javax.transaction.Transactional;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;
 import org.cedam.application.randonnees.dto.TrekDto;
@@ -29,6 +32,7 @@ public class TrekControllerTest {
 	}
 
 	@Test
+	@Transactional
 	public void saveTest() throws Exception {
 		TrekDto trekInDto = new TrekDto();
 		trekInDto.setLocation(Constante.TREK_TEST_LOCATION_1);
@@ -43,13 +47,16 @@ public class TrekControllerTest {
 		trekOutDto = object.save(trekInDto);
 		assertThat(trekOutDto.getId()).isEqualTo(Constante.TREK_TEST_ID_1);
 		
-		try {
-			trekOutDto = object.save(null);
-			assertThat(trekOutDto).isNull();
-		} catch (Exception e) {
-			//Normal
-		}	
-		
+		assertThrows(Exception.class, () -> { object.save(null);});
+	}
+	
+	@Test
+	@Transactional
+	public void deleteTest() throws Exception  {
+		var treks = object.getAll();
+		long id = treks.get(treks.size()-1).getId();
+		object.delete(id);
+		assertThat(object.getById(id)).isNull();
 	}
 
 	@Test

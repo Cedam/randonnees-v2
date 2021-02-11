@@ -1,6 +1,6 @@
 package org.cedam.application.randonnees.utils.mapper;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;
 import org.cedam.application.randonnees.dto.DayDto;
@@ -21,65 +21,56 @@ public class MapperFactoryTest {
 	@Autowired
 	private MapperFactory object;
 
-
-
 	@Test
 	@Transactional
-	public void convertDayToDayDtoTest() {
-		try {
-			Day source = Constante.getDay();
-			DayDto destination = object.convertDayToDayDto(source);
-			assertThat(source.getId()).isEqualTo(destination.getId());
-			assertThat(source.getNumber()).isEqualTo(destination.getNumber());
-			assertThat(source.getTrek().getId()).isEqualTo(destination.getTrek().getId());
-		} catch (Exception e) {
-			fail("Mapping error");
-		}
+	public void convertDayToDayDtoTest() throws Exception {
+		Day source = Constante.getDay();
+		DayDto destination = object.convertDayToDayDto(source);
+		assertThat(source.getId()).isEqualTo(destination.getId());
+		assertThat(source.getNumber()).isEqualTo(destination.getNumber());
+		assertThat(source.getTrek().getId()).isEqualTo(destination.getTrek().getId());
+
+		assertThat(object.convertDayToDayDto(null)).isNull();
 	}
 
 	@Test
 	@Transactional
-	public void convertDayDtoToDayTest() {
-		try {
-			DayDto source = Constante.getDayDto();
-			Day destination = object.convertDayDtoToDay(source);
-			assertThat(source.getId()).isEqualTo(destination.getId());
-			assertThat(source.getNumber()).isEqualTo(destination.getNumber());
-			assertThat(source.getTrek().getId()).isEqualTo(destination.getTrek().getId());
-		} catch (Exception e) {
-			fail("Mapping error");
-		}
+	public void convertDayDtoToDayTest() throws Exception {
+		DayDto source = Constante.getDayDto();
+		Day destination = object.convertDayDtoToDay(source);
+		assertThat(source.getId()).isEqualTo(destination.getId());
+		assertThat(source.getNumber()).isEqualTo(destination.getNumber());
+		assertThat(source.getTrek().getId()).isEqualTo(destination.getTrek().getId());
+
+		assertThat(object.convertDayDtoToDay(null)).isNull();
 	}
-	
+
 	@Test
 	@Transactional
-	public void convertTrekToTrekDtoTest() {
-		try {
-			Trek source = Constante.getTrek();
-			TrekDto destination = object.convertTrekToTrekDto(source);
-			assertThat(source.getId()).isEqualTo(destination.getId());
-			assertThat(source.getName()).isEqualTo(destination.getName());
-			assertThat(source.getYear()).isEqualTo(destination.getYear());
-			assertThat(source.getLocation()).isEqualTo(destination.getLocation());
-			assertThat(source.getDays()).isEqualTo(destination.getDays());
-		} catch (Exception e) {
-			fail("Mapping error");
-		}
+	public void convertTrekToTrekDtoTest() throws Exception {
+		Trek source = Constante.getTrek();
+		TrekDto destination = object.convertTrekToTrekDto(source);
+		assertThat(source.getId()).isEqualTo(destination.getId());
+		assertThat(source.getName()).isEqualTo(destination.getName());
+		assertThat(source.getYear()).isEqualTo(destination.getYear());
+		assertThat(source.getLocation()).isEqualTo(destination.getLocation());
+		assertThat(source.getDays()).isEqualTo(destination.getDays());
+		
+		assertThat(object.convertTrekToTrekDto(null)).isNull();
 	}
-	
+
 	@Test
 	@Transactional
-	public void convertTrekDtoToTrekTest() {
-		try {
-			TrekDto source = Constante.getTrekDto();
-			Trek destination = object.convertTrekDtoToTrek(source);
-			assertThat(source.getId()).isEqualTo(destination.getId());
-			assertThat(source.getName()).isEqualTo(destination.getName());
-			assertThat(source.getYear()).isEqualTo(destination.getYear());
-			assertThat(source.getLocation()).isEqualTo(destination.getLocation());
-			assertThat(source.getDays()).isEqualTo(destination.getDays());
-		} catch (Exception e) {
-			fail("Mapping error");
-		}
+	public void convertTrekDtoToTrekTest() throws Exception {
+		TrekDto source = Constante.getTrekDto();
+		Trek destination = object.convertTrekDtoToTrek(source);
+		assertThat(source.getId()).isEqualTo(destination.getId());
+		assertThat(source.getName()).isEqualTo(destination.getName());
+		assertThat(source.getYear()).isEqualTo(destination.getYear());
+		assertThat(source.getLocation()).isEqualTo(destination.getLocation());
+		assertThat(source.getDays()).isEqualTo(destination.getDays());
+
+		assertThat(object.convertTrekDtoToTrek(null)).isNull();
 	}
+
 }

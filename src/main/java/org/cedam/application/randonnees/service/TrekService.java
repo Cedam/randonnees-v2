@@ -35,8 +35,7 @@ public class TrekService {
 	}
 
 	public Trek save(Trek trek) {
-		var trekOut = trekDao.save(trek);
-		return trekOut;
+		return trekDao.save(trek);
 	}
 
 	public boolean addDay(Trek trek, Day day) {

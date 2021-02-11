@@ -35,12 +35,12 @@ public class DayDaoTest {
 
 		// Find a Day by ID
 		Optional<Day> result = object.findById(Constante.DAY_TEST_ID_1);
-		assertThat(!result.isEmpty()).isTrue();
+		assertThat(result.isEmpty()).isFalse();
 		assertThat(result.isPresent()).isTrue();
 
 		// Find Day by last number
 		List<Day> result2 = object.findByNumber(Constante.DAY_TEST_NUMBER_1);
-		assertThat(!result2.isEmpty()).isTrue();
+		assertThat(result2.isEmpty()).isFalse();
 		assertThat(result2.size() > 0).isTrue();
 
 	}

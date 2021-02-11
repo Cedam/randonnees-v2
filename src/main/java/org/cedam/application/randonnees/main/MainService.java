@@ -16,7 +16,7 @@ public class MainService {
 		DayService dayService = appContext.getBean(DayService.class);
 		
 		Trek trek = trekService.getAll().iterator().next();
-		Day day = dayService.getById(1L);
+		Day day = dayService.getById(2L);
 		day.setNumber("99");
 		dayService.save(day);
 		trekService.addDay(trek, day);

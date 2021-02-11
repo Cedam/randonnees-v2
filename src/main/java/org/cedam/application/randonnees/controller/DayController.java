@@ -30,8 +30,7 @@ public class DayController {
 	@ResponseBody
 	public DayDto getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
 		Day day = manager.getById(id);
-		var dayDto = mapperFactory.convertDayToDayDto(day);
-		return dayDto;
+		return mapperFactory.convertDayToDayDto(day);
 	}
 
 	@GetMapping("/day/bytrekid")
@@ -53,11 +52,9 @@ public class DayController {
 	@ResponseBody
 	public DayDto save(DayDto dayInDto) throws Exception {
 		DayDto dayOutDto = null;
-		if (dayInDto != null) {
-			var dayIn = mapperFactory.convertDayDtoToDay(dayInDto);
-			Day dayOut = manager.save(dayIn);
-			dayOutDto = mapperFactory.convertDayToDayDto(dayOut);
-		}
+		var dayIn = mapperFactory.convertDayDtoToDay(dayInDto);
+		Day dayOut = manager.save(dayIn);
+		dayOutDto = mapperFactory.convertDayToDayDto(dayOut);
 		return dayOutDto;
 	}
 
