@@ -36,8 +36,14 @@ public class DayService {
 		return dayDao.save(day);
 	}
 
+<<<<<<< HEAD:src/main/java/org/cedam/application/randonnees/service/DayService.java
 	public void delete(long id) {
 		dayDao.deleteById(id);
+=======
+	public boolean delete(long id) {
+		// TODO
+		return false;
+>>>>>>> bb70fb99bc4a70fd3a386636e7ffff87fd07206c:src/main/java/org/cedam/application/randonnees/business/DayBusiness.java
 	}
 
 }
