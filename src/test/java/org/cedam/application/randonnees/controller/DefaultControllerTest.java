@@ -1,4 +1,4 @@
-package org.cedam.application.randonnees.controler;
+package org.cedam.application.randonnees.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;

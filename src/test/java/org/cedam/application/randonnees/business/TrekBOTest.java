@@ -28,7 +28,8 @@ public class TrekBOTest {
 		Trek day = object.getById(listeTreks.get(0).getId());
 		assertThat(day).isNotNull();
 		assertThat(listeTreks.get(0).getId()).isEqualTo(day.getId());
-
+		assertThat(listeTreks.get(0).getName()).isEqualTo(Constante.TREK_TEST_NAME_1);
+		
 		Trek day2 = object.getById(listeTreks.get(0).getId() + 1);
 		assertThat(day2).isNotNull();
 		assertThat(listeTreks.get(0).getId()).isNotEqualTo(day2.getId());

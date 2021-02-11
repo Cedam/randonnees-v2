@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service("dayBusiness")
 public class DayBusiness {
 
+	
 	@Autowired
 	private DayDao dayDao;
 
@@ -22,15 +23,21 @@ public class DayBusiness {
 	}
 
 	public Day getById(Long id) {
+		Day day = null;
 		Optional<Day> value = dayDao.findById(id);
 		if (value.isPresent()) {
-			return value.get();
+			day= value.get();
 		}
-		return null;
+		return day;
 	}
 
 	public Day save(Day day) {
 		return dayDao.save(day);
+	}
+
+	public boolean delete(long id) {
+		// TODO
+		return false;
 	}
 
 }

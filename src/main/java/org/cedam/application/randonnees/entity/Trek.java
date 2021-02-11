@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +23,7 @@ public class Trek extends SuperEntity {
 	@Column(name = "LOCATION", nullable = false, unique = false)
 	private String location;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trek")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trek", fetch = FetchType.EAGER)
 	private List<Day> days = new ArrayList<>();
 
 	public String getName() {
