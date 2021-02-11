@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.cedam.application.randonnees.business.TrekBusiness;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.TrekService;
@@ -22,12 +21,8 @@ public class TrekController {
 	private static final Logger logger = LogManager.getLogger(TrekController.class);
 
 	@Autowired
-<<<<<<< HEAD
 	private TrekService manager;
-=======
-	private TrekBusiness manager;
->>>>>>> bb70fb99bc4a70fd3a386636e7ffff87fd07206c
-	
+
 	@Autowired
 	MapperFactory mapperFactory;
 
@@ -43,7 +38,7 @@ public class TrekController {
 				logger.error("DayController.getAllByTrekId", e);
 			}
 		});
-		
+
 		return treksDto;
 	}
 
@@ -69,12 +64,8 @@ public class TrekController {
 	@GetMapping("/trek/delete")
 	@ResponseBody
 	public boolean delete(@RequestParam(value = "id", defaultValue = "0") long id) {
-<<<<<<< HEAD
-		 manager.delete(id);
-		 return true;
-=======
-		return manager.delete(id);
->>>>>>> bb70fb99bc4a70fd3a386636e7ffff87fd07206c
+		manager.delete(id);
+		return true;
 	}
 
 	@GetMapping("/trek")

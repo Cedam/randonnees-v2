@@ -41,23 +41,13 @@ public class TrekService {
 
 	public boolean addDay(Trek trek, Day day) {
 		day.setTrek(trek);
-<<<<<<< HEAD:src/main/java/org/cedam/application/randonnees/service/TrekService.java
 		day = dayService.save(day);
 		return day != null;
 	}
 
 	public void delete(long id) {
 		trekDao.deleteById(id);
-=======
-		//TODO
-		//day = dayBusiness.save(day);
-		return day != null;
 	}
 
-	public boolean delete(long id) {
-		// TODO Auto-generated method stub
-		return false;
->>>>>>> bb70fb99bc4a70fd3a386636e7ffff87fd07206c:src/main/java/org/cedam/application/randonnees/business/TrekBusiness.java
-	}
 
 }

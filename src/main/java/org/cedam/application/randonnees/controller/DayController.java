@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.cedam.application.randonnees.business.DayBusiness;
 import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.service.DayService;
@@ -22,11 +21,7 @@ public class DayController {
 	private static final Logger logger = LogManager.getLogger(DayController.class);
 
 	@Autowired
-<<<<<<< HEAD
 	private DayService manager;
-=======
-	private DayBusiness manager;
->>>>>>> bb70fb99bc4a70fd3a386636e7ffff87fd07206c
 
 	@Autowired
 	MapperFactory mapperFactory;
@@ -42,10 +37,6 @@ public class DayController {
 	@GetMapping("/day/bytrekid")
 	@ResponseBody
 	public List<DayDto> getAllByTrekId(@RequestParam(value = "id", defaultValue = "0") long id) {
-<<<<<<< HEAD
-=======
-		// TODO
->>>>>>> bb70fb99bc4a70fd3a386636e7ffff87fd07206c
 		var daysDto = new ArrayList<DayDto>();
 		var days = manager.getAll();
 		days.forEach(x -> {
@@ -72,14 +63,9 @@ public class DayController {
 
 	@GetMapping("/day/delete")
 	@ResponseBody
-<<<<<<< HEAD
 	public Boolean delete(@RequestParam(value = "id", defaultValue = "0") long id) {
 		manager.delete(id);
 		return true;
-=======
-	public boolean delete(@RequestParam(value = "id", defaultValue = "0") long id) {
-		return manager.delete(id);
->>>>>>> bb70fb99bc4a70fd3a386636e7ffff87fd07206c
 	}
 
 	@GetMapping("/day")
