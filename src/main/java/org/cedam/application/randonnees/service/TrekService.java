@@ -42,7 +42,7 @@ public class TrekService {
 		if(day!=null)
 		{
 			day.setTrek(trek);
-			day = dayService.save(day);
+			dayService.save(day);
 		}
 	}
 

@@ -3,6 +3,7 @@ package org.cedam.application.randonnees.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.cedam.application.randonnees.appconfig.AppConfigService;
 import org.cedam.application.randonnees.entity.Day;
@@ -22,6 +23,9 @@ public class TrekServiceTest {
 	@Autowired
 	private TrekService object;
 
+	@Autowired
+	private DayService dayService;
+	
 	@Test
 	@Transactional
 	public void testGetById() {
@@ -92,6 +96,13 @@ public class TrekServiceTest {
 		//assertThat(newTrek.getDays().size()).isEqualTo(nbDays+1);
 		
 		object.addDay(trek, null);
+		
+		Optional<Day> dayTmp = dayService.getAll()
+					.stream()
+					.filter(x -> x.getTrek().getId()==trek.getId() && x.getNumber()=="98")
+					.findFirst();
+		
+		assertThat(dayTmp.isPresent()).isTrue();
 		
 	}
 
