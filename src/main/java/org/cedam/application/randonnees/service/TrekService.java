@@ -38,10 +38,12 @@ public class TrekService {
 		return trekDao.save(trek);
 	}
 
-	public boolean addDay(Trek trek, Day day) {
-		day.setTrek(trek);
-		day = dayService.save(day);
-		return day != null;
+	public void addDay(Trek trek, Day day) {
+		if(day!=null)
+		{
+			day.setTrek(trek);
+			day = dayService.save(day);
+		}
 	}
 
 	public void delete(long id) {

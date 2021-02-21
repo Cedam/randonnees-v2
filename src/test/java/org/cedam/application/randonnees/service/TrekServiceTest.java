@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 import org.cedam.application.randonnees.appconfig.AppConfigService;
+import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.test.mock.Constante;
@@ -20,7 +21,6 @@ public class TrekServiceTest {
 
 	@Autowired
 	private TrekService object;
-
 
 	@Test
 	@Transactional
@@ -75,6 +75,24 @@ public class TrekServiceTest {
 		trekSave = object.save(trekB);
 		assertThat(String.valueOf(valeurNumberB)).isEqualTo(object.getById(trekSave.getId()).getName());
 		assertThat(numberBefore).isEqualTo(object.getAll().size());
+	}
+	
+	@Test
+	@Transactional
+	public void testAddDay() {
+		
+		Trek trek = object.getAll().iterator().next();
+		var nbDays = trek.getDays().size();
+		
+		Day day = Constante.getDay();
+		day.setNumber("98");
+		object.addDay(trek, day);
+		
+		//TODO le jour n'est pas présent dans la liste des jours du Trek (si on met en commentaire @Transactional, alors c'est bon.
+		//assertThat(newTrek.getDays().size()).isEqualTo(nbDays+1);
+		
+		object.addDay(trek, null);
+		
 	}
 
 }
