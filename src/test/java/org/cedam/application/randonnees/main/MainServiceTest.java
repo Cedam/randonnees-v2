@@ -13,7 +13,7 @@ public class MainServiceTest {
 
 	@Test
 	@Transactional
-	public void mainTest() {
+	public void testMain() {
 		MainService.main(null);
 		assertThat(true).isTrue();
 	}

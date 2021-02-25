@@ -1,11 +1,12 @@
 package org.cedam.application.randonnees.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
+
 import org.cedam.application.randonnees.appconfig.AppConfigService;
 import org.cedam.application.randonnees.entity.Day;
-import org.cedam.application.randonnees.service.DayService;
 import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,13 @@ public class DayServiceTest {
 	@Autowired
 	private DayService object;
 
-
+	@Test
+	@Transactional
+	public void testGetAll() {
+		List<Day> listDays = object.getAll();
+		assertThat(listDays).isNotNull();
+	}
+	
 	@Test
 	@Transactional
 	public void testGetById() {
@@ -36,19 +43,38 @@ public class DayServiceTest {
 
 	@Test
 	@Transactional
-	public void testListDays() {
-		List<Day> listDays = object.getAll();
-		assertThat(listDays).isNotNull();
+	public void testGetListByTrekId() {
+		List<Day> listDays = object.getListByTrekId(Constante.TREK_TEST_ID_1);
+		assertThat(listDays.size()).isPositive();
+		listDays.forEach(x -> {
+			if(x.getTrek().getId()!=Constante.TREK_TEST_ID_1)
+			{
+				fail(String.format("Incorrect TrekId (%s) for le Day %s", x.getTrek().getId(), x.getId()));
+			}
+			
+		});
+		
+		List<Day> listDays2 = object.getListByTrekId((long) -1);
+		assertThat(listDays2.size()).isZero();
 	}
-
+	
 	@Test
 	@Transactional
-	public void testInsert() {
+	public void testSave() {
 		int numberBefore = object.getAll().size();
 		object.save(Constante.getDay());
 		assertThat(++numberBefore).isEqualTo(object.getAll().size());
 	}
 
+	@Test
+	@Transactional
+	public void testDelete() {
+		var days = object.getAll();
+		long id = days.get(days.size()-1).getId();
+		object.delete(id);
+		assertThat(object.getById(id)).isNull();
+	}
+	
 	@Test
 	@Transactional
 	public void testUpdate() {
@@ -71,4 +97,6 @@ public class DayServiceTest {
 		assertThat(String.valueOf(valeurNumberB)).isEqualTo(object.getById(daySave.getId()).getNumber());
 		assertThat(numberBefore).isEqualTo(object.getAll().size());
 	}
+	
+	
 }

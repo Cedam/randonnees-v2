@@ -23,7 +23,7 @@ public class MapperFactoryTest {
 
 	@Test
 	@Transactional
-	public void convertDayToDayDtoTest() throws Exception {
+	public void testConvertDayToDayDto() throws Exception {
 		Day source = Constante.getDay();
 		DayDto destination = object.convertDayToDayDto(source);
 		assertThat(source.getId()).isEqualTo(destination.getId());
@@ -35,7 +35,7 @@ public class MapperFactoryTest {
 
 	@Test
 	@Transactional
-	public void convertDayDtoToDayTest() throws Exception {
+	public void testConvertDayDtoToDay() throws Exception {
 		DayDto source = Constante.getDayDto();
 		Day destination = object.convertDayDtoToDay(source);
 		assertThat(source.getId()).isEqualTo(destination.getId());
@@ -47,7 +47,7 @@ public class MapperFactoryTest {
 
 	@Test
 	@Transactional
-	public void convertTrekToTrekDtoTest() throws Exception {
+	public void testConvertTrekToTrekDto() throws Exception {
 		Trek source = Constante.getTrek();
 		TrekDto destination = object.convertTrekToTrekDto(source);
 		assertThat(source.getId()).isEqualTo(destination.getId());
@@ -61,7 +61,7 @@ public class MapperFactoryTest {
 
 	@Test
 	@Transactional
-	public void convertTrekDtoToTrekTest() throws Exception {
+	public void testConvertTrekDtoToTrek() throws Exception {
 		TrekDto source = Constante.getTrekDto();
 		Trek destination = object.convertTrekDtoToTrek(source);
 		assertThat(source.getId()).isEqualTo(destination.getId());

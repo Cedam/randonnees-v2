@@ -13,7 +13,7 @@ public class DayDtoTest {
 
 	@Test
 	@Transactional
-	public void Test() {
+	public void test() {
 		var id = 1;
 		var number = "number";
 		var trekDto = new TrekDto();

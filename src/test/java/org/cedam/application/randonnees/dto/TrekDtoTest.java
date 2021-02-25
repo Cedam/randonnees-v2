@@ -16,7 +16,7 @@ public class TrekDtoTest {
 
 	@Test
 	@Transactional
-	public void Test() {
+	public void test() {
 		var id = 1;
 		var name = "name";
 		var year = 99;

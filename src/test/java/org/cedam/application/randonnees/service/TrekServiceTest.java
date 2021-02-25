@@ -8,7 +8,6 @@ import java.util.Optional;
 import org.cedam.application.randonnees.appconfig.AppConfigService;
 import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
-import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,14 +41,14 @@ public class TrekServiceTest {
 
 	@Test
 	@Transactional
-	public void testListTreks() {
+	public void testGetAll() {
 		List<Trek> listTreks = object.getAll();
 		assertThat(listTreks).isNotNull();
 	}
 
 	@Test
 	@Transactional
-	public void testInsert() {
+	public void testSave() {
 		int numberBefore = object.getAll().size();
 		Trek trekA = new Trek();
 		trekA.setName(Constante.TREK_TEST_NAME_1);
@@ -58,6 +57,15 @@ public class TrekServiceTest {
 		assertThat(++numberBefore).isEqualTo(object.getAll().size());
 	}
 
+	@Test
+	@Transactional
+	public void testDelete() {
+		var treks = object.getAll();
+		long id = treks.get(treks.size()-1).getId();
+		object.delete(id);
+		assertThat(object.getById(id)).isNull();
+	}
+	
 	@Test
 	@Transactional
 	public void testUpdate() {

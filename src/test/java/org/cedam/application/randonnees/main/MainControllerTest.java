@@ -13,7 +13,7 @@ public class MainControllerTest {
 
 	@Test
 	@Transactional
-	public void mainTest() {
+	public void testMain() {
 		MainController.main(null);
 		assertThat(true).isTrue();
 	}

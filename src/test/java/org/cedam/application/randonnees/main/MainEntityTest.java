@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 public class MainEntityTest {
 
 	@Test
-	public void mainTest() {
+	public void testMain() {
 		MainEntity.main(null);
 		assertThat(true).isTrue();
 	}

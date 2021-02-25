@@ -23,27 +23,39 @@ public class DayDaoTest {
 
 	@Test
 	@Transactional
-	public void saveTest() {
+	public void testSave() {
 		Day dayResult = object.save(Constante.getDay());
 		assertThat(dayResult).isNotNull();
-		assertThat(dayResult.getId() > 0).isTrue();
+		assertThat(dayResult.getId()).isNotZero();
 	}
 
 	@Test
 	@Transactional
-	public void findTest() {
+	public void testFind() {
 
-		// Find a Day by ID
+		// Find a Day by 'id'
 		Optional<Day> result = object.findById(Constante.DAY_TEST_ID_1);
 		assertThat(result.isEmpty()).isFalse();
 		assertThat(result.isPresent()).isTrue();
 
-		// Find Day by last number
+		// Find Days by 'number'
 		List<Day> result2 = object.findByNumber(Constante.DAY_TEST_NUMBER_1);
 		assertThat(result2.isEmpty()).isFalse();
-		assertThat(result2.size() > 0).isTrue();
+		assertThat(result2.size()).isNotZero();
+		
+		// Find Days by 'trekId'
+		List<Day> result3 = object.findListByTrekId(Constante.TREK_TEST_ID_1);
+		assertThat(result3.isEmpty()).isFalse();
+		assertThat(result3.size()).isNotZero();
+		
+		// Find Days by 'trekId' en pure SQL
+		List<Day> result4 = object.findListByTrekIdSql(Constante.TREK_TEST_ID_1);
+		assertThat(result4.isEmpty()).isFalse();
+		assertThat(result4.size()).isNotZero();
 
 	}
+	
+	
 	
 	//TODO DCO : faire de mocks
 

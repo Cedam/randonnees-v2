@@ -11,6 +11,7 @@ import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 
 @ContextConfiguration(classes = AppConfigController.class)
@@ -21,32 +22,32 @@ public class TrekControllerTest {
 	private TrekController object;
 
 	@Test
-	public void getAllTest() {
+	public void testGetAll() {
 		assertThat(object.getAll()).isNotNull();
 	}
 
 	@Test
-	public void getByIdTest() throws Exception {
+	public void testGetById() throws Exception {
 		long idTrek = Constante.TREK_TEST_ID_1;
-		TrekDto trek = object.getById(idTrek);
-		assertThat(idTrek).isEqualTo(trek.getId());
+		ResponseEntity<TrekDto> trek = object.getById(idTrek);
+		assertThat(idTrek).isEqualTo(trek.getBody().getId());
 	}
 
 	@Test
 	@Transactional
-	public void saveTest() throws Exception {
+	public void testSave() throws Exception {
 		TrekDto trekInDto = new TrekDto();
 		trekInDto.setLocation(Constante.TREK_TEST_LOCATION_1);
 		trekInDto.setName(Constante.TREK_TEST_NAME_1);
 
 		// Test insert
-		TrekDto trekOutDto = object.save(trekInDto);
+		ResponseEntity<TrekDto> trekOutDto = object.save(trekInDto);
 		assertThat(trekOutDto).isNotNull();
 
 		// Test update
 		trekInDto.setId(Constante.TREK_TEST_ID_1);
 		trekOutDto = object.save(trekInDto);
-		assertThat(trekOutDto.getId()).isEqualTo(Constante.TREK_TEST_ID_1);
+		assertThat(trekOutDto.getBody().getId()).isEqualTo(Constante.TREK_TEST_ID_1);
 
 		assertThrows(Exception.class, () -> {
 			object.save(null);
@@ -55,16 +56,16 @@ public class TrekControllerTest {
 
 	@Test
 	@Transactional
-	public void deleteTest() throws Exception {
+	public void testDelete() throws Exception {
 		var treks = object.getAll();
-		long id = treks.get(treks.size() - 1).getId();
+		long id = treks.getBody().get(treks.getBody().size() - 1).getId();
 		object.delete(id);
-		assertThat(object.getById(id)).isNull();
+		assertThrows(Exception.class, () -> { object.getById(id); });
 	}
 
 	@Test
 	public void testTest() {
-		assertThat("Futur application randonnées : trek.").isEqualTo(object.test());
+		assertThat("Futur application randonnées : trek.").isEqualTo(object.test().getBody());
 	}
 
 }

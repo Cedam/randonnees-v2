@@ -13,7 +13,7 @@ public class MainDaoTest {
 
 	@Test
 	@Transactional
-	public void mainTest() {
+	public void testMain() {
 		MainDao.main(null);
 		assertThat(true).isTrue();
 	}

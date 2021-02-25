@@ -30,6 +30,11 @@ public class DayService {
 		return day;
 	}
 
+	public List<Day> getListByTrekId(Long id) {
+		return dayDao.findListByTrekId(id);
+	}
+	
+	
 	public Day save(Day day) {
 		return dayDao.save(day);
 	}

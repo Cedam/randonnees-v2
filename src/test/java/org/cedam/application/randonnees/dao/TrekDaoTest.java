@@ -27,11 +27,11 @@ public class TrekDaoTest {
 
 	@Test
 	@Transactional
-	public void SaveTest() {
+	public void testSave() {
 		Trek trek = Constante.getTrek2();
 		Trek trekResult = object.save(trek);
 		assertThat(trekResult).isNotNull();
-		assertThat(trekResult.getId() > 0).isTrue();
+		assertThat(trekResult.getId()).isNotZero();
 
 		Day day = dayDao.findAll().iterator().next();
 
@@ -40,12 +40,12 @@ public class TrekDaoTest {
 		trek.setDays(listDays);
 		trekResult = object.save(trek);
 		assertThat(trekResult).isNotNull();
-		assertThat(trekResult.getId() > 0).isTrue();
+		assertThat(trekResult.getId()).isNotZero();
 	}
 
 	@Test
 	@Transactional
-	public void FindTest() {
+	public void testFind() {
 
 		// Find a Trek by ID
 		Optional<Trek> result = object.findById(Constante.TREK_TEST_ID_1);
@@ -55,7 +55,7 @@ public class TrekDaoTest {
 		// Find Trek by name
 		List<Trek> result2 = object.findByName(Constante.TREK_TEST_NAME_1);
 		assertThat(!result2.isEmpty()).isTrue();
-		assertThat(result2.size() > 0).isTrue();
+		assertThat(result2.size()).isNotZero();
 
 	}
 

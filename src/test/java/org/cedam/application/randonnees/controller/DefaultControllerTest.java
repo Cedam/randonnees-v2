@@ -15,9 +15,8 @@ public class DefaultControllerTest {
 	@Autowired
 	private DefaultController object;
 	
-
 	@Test
-	public void welcomeTest() {
+	public void testWelcome() {
 		
 		assertThat(object.welcome()).isNotNull();
 	}

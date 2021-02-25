@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.cedam.application.randonnees.controller.exceptions.InternalErrorRandonneesException;
+import org.cedam.application.randonnees.controller.exceptions.NotFoundRandonneesException;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.utils.mapper.MapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("/treks")
@@ -32,7 +37,7 @@ public class TrekController {
 
 	@GetMapping("/")
 	@ResponseBody
-	public List<TrekDto> getAll() {
+	public ResponseEntity<List<TrekDto>> getAll() {
 		var treksDto = new ArrayList<TrekDto>();
 		var treks = manager.getAll();
 		treks.forEach(x -> {
@@ -40,39 +45,47 @@ public class TrekController {
 				treksDto.add(mapperFactory.convertTrekToTrekDto(x));
 			} catch (Exception e) {
 				logger.error("DayController.getAllByTrekId", e);
+				throw new InternalErrorRandonneesException(e);
 			}
 		});
 
-		return treksDto;
+		return ok(treksDto);
 	}
 
 	@GetMapping("/id")
 	@ResponseBody
-	public TrekDto getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
+	public ResponseEntity<TrekDto> getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
 		Trek trek = manager.getById(id);
-		return mapperFactory.convertTrekToTrekDto(trek);
+		
+		var trekDto = mapperFactory.convertTrekToTrekDto(trek);
+		if(trekDto==null)
+		{
+			throw new NotFoundRandonneesException(String.format("Aucun Trek avec l'ID '%s'", id));
+		}
+		
+		return ok(trekDto);
 	}
 
 	@PostMapping("/")
 	@ResponseBody
-	public TrekDto save(TrekDto trekInDto) throws Exception {
+	public ResponseEntity<TrekDto> save(TrekDto trekInDto) throws Exception {
 		TrekDto trekOutDto = null;
 			Trek trek = manager.save(mapperFactory.convertTrekDtoToTrek(trekInDto));
 			trekOutDto = mapperFactory.convertTrekToTrekDto(trek);
-		return trekOutDto;
+		return ok(trekOutDto);
 	}
 
 	@DeleteMapping("/id")
 	@ResponseBody
-	public boolean delete(@RequestParam(value = "id", defaultValue = "0") long id) {
+	public ResponseEntity<Boolean> delete(@RequestParam(value = "id", defaultValue = "0") long id) {
 		manager.delete(id);
-		return true;
+		return ok(true);
 	}
 
-	@RequestMapping("/test")
+	@GetMapping("/test")
 	@ResponseBody
-	public String test() {
-		return "Futur application randonnées : trek.";
+	public ResponseEntity<String> test() {
+		return ok("Futur application randonnées : trek.");
 	}
 
 }
