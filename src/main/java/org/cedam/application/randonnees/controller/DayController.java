@@ -10,12 +10,16 @@ import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.service.DayService;
 import org.cedam.application.randonnees.utils.mapper.MapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/days")
 public class DayController {
 
 	private static final Logger logger = LogManager.getLogger(DayController.class);
@@ -26,18 +30,25 @@ public class DayController {
 	@Autowired
 	MapperFactory mapperFactory;
 
-	@GetMapping("/day/id")
+//TODO DCO : Gestion retour REST et Exception 'ElementInexistantException'
+//    @GetMapping("/all")
+//    public ResponseEntity<List<User>> findAllUsersList() {
+//        return ok(userService.findAllList());
+//    }
+    
+	@GetMapping("/id")
 	@ResponseBody
 	public DayDto getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
 		Day day = manager.getById(id);
 		return mapperFactory.convertDayToDayDto(day);
 	}
 
-	@GetMapping("/day/bytrekid")
+	@GetMapping("/bytrekid")
 	@ResponseBody
 	public List<DayDto> getAllByTrekId(@RequestParam(value = "id", defaultValue = "0") long id) {
 		var daysDto = new ArrayList<DayDto>();
 		var days = manager.getAll();
+		//TODO DCO : recherche Days par Trek
 		days.forEach(x -> {
 			try {
 				daysDto.add(mapperFactory.convertDayToDayDto(x));
@@ -48,7 +59,7 @@ public class DayController {
 		return daysDto;
 	}
 
-	@GetMapping("/day/save")
+	@PostMapping("/")
 	@ResponseBody
 	public DayDto save(DayDto dayInDto) throws Exception {
 		DayDto dayOutDto = null;
@@ -58,14 +69,14 @@ public class DayController {
 		return dayOutDto;
 	}
 
-	@GetMapping("/day/delete")
+	@DeleteMapping("/id")
 	@ResponseBody
 	public Boolean delete(@RequestParam(value = "id", defaultValue = "0") long id) {
 		manager.delete(id);
 		return true;
 	}
 
-	@GetMapping("/day")
+	@GetMapping("/test")
 	@ResponseBody
 	public String test() {
 		return "Futur application randonnées : day";

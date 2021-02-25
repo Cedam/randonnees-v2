@@ -10,12 +10,16 @@ import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.utils.mapper.MapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/treks")
 public class TrekController {
 
 	private static final Logger logger = LogManager.getLogger(TrekController.class);
@@ -26,7 +30,7 @@ public class TrekController {
 	@Autowired
 	MapperFactory mapperFactory;
 
-	@GetMapping("/trek/all")
+	@GetMapping("/")
 	@ResponseBody
 	public List<TrekDto> getAll() {
 		var treksDto = new ArrayList<TrekDto>();
@@ -42,14 +46,14 @@ public class TrekController {
 		return treksDto;
 	}
 
-	@GetMapping("/trek/id")
+	@GetMapping("/id")
 	@ResponseBody
 	public TrekDto getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
 		Trek trek = manager.getById(id);
 		return mapperFactory.convertTrekToTrekDto(trek);
 	}
 
-	@GetMapping("/trek/save")
+	@PostMapping("/")
 	@ResponseBody
 	public TrekDto save(TrekDto trekInDto) throws Exception {
 		TrekDto trekOutDto = null;
@@ -58,14 +62,14 @@ public class TrekController {
 		return trekOutDto;
 	}
 
-	@GetMapping("/trek/delete")
+	@DeleteMapping("/id")
 	@ResponseBody
 	public boolean delete(@RequestParam(value = "id", defaultValue = "0") long id) {
 		manager.delete(id);
 		return true;
 	}
 
-	@GetMapping("/trek")
+	@RequestMapping("/test")
 	@ResponseBody
 	public String test() {
 		return "Futur application randonnées : trek.";

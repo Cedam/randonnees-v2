@@ -7,4 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DayDao extends JpaRepository<Day, Long> {
 	List<Day> findByNumber(String number);
+	
+	//TODO DCO : recherche Days par Trek
+	//List<Day> findByTrek(String number);
 }

@@ -86,7 +86,6 @@ public class TrekServiceTest {
 	public void testAddDay() {
 		
 		Trek trek = object.getAll().iterator().next();
-		var nbDays = trek.getDays().size();
 		
 		Day day = Constante.getDay();
 		day.setNumber("98");
