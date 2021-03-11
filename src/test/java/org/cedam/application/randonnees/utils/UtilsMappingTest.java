@@ -1,4 +1,4 @@
-package org.cedam.application.randonnees.utils.mapper;
+package org.cedam.application.randonnees.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,13 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @ContextConfiguration(classes = AppConfigController.class)
 @SpringBootTest
-public class MapperFactoryTest {
+public class UtilsMappingTest {
 
 	@Autowired
-	private MapperFactory object;
+	private UtilsMapping object;
 
 	@Test
-	@Transactional
 	public void testConvertDayToDayDto() throws Exception {
 		Day source = Constante.getDay();
 		DayDto destination = object.convertDayToDayDto(source);
@@ -34,7 +33,6 @@ public class MapperFactoryTest {
 	}
 
 	@Test
-	@Transactional
 	public void testConvertDayDtoToDay() throws Exception {
 		DayDto source = Constante.getDayDto();
 		Day destination = object.convertDayDtoToDay(source);
@@ -46,7 +44,6 @@ public class MapperFactoryTest {
 	}
 
 	@Test
-	@Transactional
 	public void testConvertTrekToTrekDto() throws Exception {
 		Trek source = Constante.getTrek();
 		TrekDto destination = object.convertTrekToTrekDto(source);
@@ -60,7 +57,6 @@ public class MapperFactoryTest {
 	}
 
 	@Test
-	@Transactional
 	public void testConvertTrekDtoToTrek() throws Exception {
 		TrekDto source = Constante.getTrekDto();
 		Trek destination = object.convertTrekDtoToTrek(source);

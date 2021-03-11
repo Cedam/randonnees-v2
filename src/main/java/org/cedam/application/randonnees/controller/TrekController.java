@@ -1,5 +1,7 @@
 package org.cedam.application.randonnees.controller;
 
+import static org.springframework.http.ResponseEntity.ok;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import org.cedam.application.randonnees.controller.exceptions.NotFoundRandonnees
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.TrekService;
-import org.cedam.application.randonnees.utils.mapper.MapperFactory;
+import org.cedam.application.randonnees.utils.UtilsMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("/treks")
@@ -33,7 +33,7 @@ public class TrekController {
 	private TrekService manager;
 
 	@Autowired
-	MapperFactory mapperFactory;
+	UtilsMapping utilsMapping;
 
 	@GetMapping("/")
 	@ResponseBody
@@ -42,7 +42,7 @@ public class TrekController {
 		var treks = manager.getAll();
 		treks.forEach(x -> {
 			try {
-				treksDto.add(mapperFactory.convertTrekToTrekDto(x));
+				treksDto.add(utilsMapping.convertTrekToTrekDto(x));
 			} catch (Exception e) {
 				logger.error("DayController.getAllByTrekId", e);
 				throw new InternalErrorRandonneesException(e);
@@ -57,7 +57,7 @@ public class TrekController {
 	public ResponseEntity<TrekDto> getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
 		Trek trek = manager.getById(id);
 		
-		var trekDto = mapperFactory.convertTrekToTrekDto(trek);
+		var trekDto = utilsMapping.convertTrekToTrekDto(trek);
 		if(trekDto==null)
 		{
 			throw new NotFoundRandonneesException(String.format("Aucun Trek avec l'ID '%s'", id));
@@ -70,8 +70,8 @@ public class TrekController {
 	@ResponseBody
 	public ResponseEntity<TrekDto> save(TrekDto trekInDto) throws Exception {
 		TrekDto trekOutDto = null;
-			Trek trek = manager.save(mapperFactory.convertTrekDtoToTrek(trekInDto));
-			trekOutDto = mapperFactory.convertTrekToTrekDto(trek);
+			Trek trek = manager.save(utilsMapping.convertTrekDtoToTrek(trekInDto));
+			trekOutDto = utilsMapping.convertTrekToTrekDto(trek);
 		return ok(trekOutDto);
 	}
 
