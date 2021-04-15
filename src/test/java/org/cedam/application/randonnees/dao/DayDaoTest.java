@@ -19,8 +19,7 @@ public class DayDaoTest {
 
 	@Autowired
 	private DayDao object;
-
-
+	
 	@Test
 	@Transactional
 	public void testSave() {
@@ -54,9 +53,5 @@ public class DayDaoTest {
 		assertThat(result4.size()).isNotZero();
 
 	}
-	
-	
-	
-	//TODO DCO : faire de mocks
 
 }

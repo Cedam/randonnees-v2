@@ -17,8 +17,7 @@ public class UtilsJson {
 	public <T> T deserialize(String valuejson, Class<T> classType) throws JsonProcessingException
 	{
 		ObjectMapper objectMapper = new ObjectMapper();
-		T obj =  objectMapper.readValue(valuejson, classType);
-		return obj;
+		return objectMapper.readValue(valuejson, classType);
 	}
 	
 }

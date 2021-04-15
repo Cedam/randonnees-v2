@@ -17,8 +17,8 @@ public class AppConfigEntity {
 	}
 
 	@Bean(name = "trek")
-	public Trek getTtek() {
+	public Trek getTrek() {
 		return new Trek();
 	}
-
+	
 }
