@@ -22,7 +22,7 @@ public class UtilsMapping {
 			var mapper = (Mapper) dozerBean.getObject();
 			mapper.map(source, destination);
 		}
-		return (T) destination;
+		return destination;
 	}
 
 	public DayDto convertDayToDayDto(Day source) throws Exception {

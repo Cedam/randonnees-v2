@@ -44,7 +44,7 @@ public class TrekController {
 			try {
 				treksDto.add(utilsMapping.convertTrekToTrekDto(x));
 			} catch (Exception e) {
-				logger.error("DayController.getAllByTrekId", e);
+				logger.error("UtilsMapping.convertTrekToTrekDto", e);
 				throw new InternalErrorRandonneesException(e);
 			}
 		});
