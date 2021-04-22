@@ -72,20 +72,20 @@ public class TrekServiceTest {
 		int numberBefore = object.getAll().size();
 
 		// Persistant
-		double valeurNumberA = Math.random();
+		String valeurNumberA = String.valueOf(Math.random());
 		Trek trekA = object.getAll().get(0);
-		trekA.setName(String.valueOf(valeurNumberA));
+		trekA.setName(valeurNumberA);
 		Trek trekSave = object.save(trekA);
-		assertThat(String.valueOf(valeurNumberA)).isEqualTo(object.getById(trekSave.getId()).getName());
+		assertThat(valeurNumberA).isEqualTo(object.getById(trekSave.getId()).getName());
 
 		// Détaché
-		double valeurNumberB = Math.random();
+		String valeurNumberB = String.valueOf(Math.random());
 		Trek trekB = new Trek();
 		trekB.setId(Constante.TREK_TEST_ID_2);
-		trekB.setName(String.valueOf(valeurNumberB));
+		trekB.setName(valeurNumberB);
 		trekB.setLocation(Constante.TREK_TEST_LOCATION_2);
 		trekSave = object.save(trekB);
-		assertThat(String.valueOf(valeurNumberB)).isEqualTo(object.getById(trekSave.getId()).getName());
+		assertThat(valeurNumberB).isEqualTo(object.getById(trekSave.getId()).getName());
 		assertThat(numberBefore).isEqualTo(object.getAll().size());
 	}
 	

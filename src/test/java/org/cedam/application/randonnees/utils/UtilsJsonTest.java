@@ -29,12 +29,12 @@ public class UtilsJsonTest {
 		Day source = Constante.getDay();
 		String strJson = object.serialize(source);
 		assertNotNull(strJson);
-		assertThat(strJson).isEqualTo(DAY_JSON);
+		assertThat(DAY_JSON).isEqualTo(strJson);
 		
 		Trek source2 = Constante.getTrek();
 		String strJson2 = object.serialize(source2);
 		assertNotNull(strJson2);
-		assertThat(strJson2).isEqualTo(TREK_JSON);
+		assertThat(TREK_JSON).isEqualTo(strJson2);
 	}
 
 	@Test

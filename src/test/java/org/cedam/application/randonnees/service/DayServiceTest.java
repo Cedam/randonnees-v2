@@ -81,20 +81,20 @@ public class DayServiceTest {
 		int numberBefore = object.getAll().size();
 
 		// Persistant
-		double valeurNumberA = Math.random();
+		String valeurNumberA = String.valueOf(Math.random());
 		Day dayA = object.getAll().get(0);
-		dayA.setNumber(String.valueOf(valeurNumberA));
+		dayA.setNumber(valeurNumberA);
 		Day daySave = object.save(dayA);
-		assertThat(String.valueOf(valeurNumberA)).isEqualTo(object.getById(daySave.getId()).getNumber());
+		assertThat(valeurNumberA).isEqualTo(object.getById(daySave.getId()).getNumber());
 
 		// Détaché
-		double valeurNumberB = Math.random();
+		String valeurNumberB = String.valueOf(Math.random());
 		Day dayB = new Day();
 		dayB.setId(Constante.DAY_TEST_ID_2);
-		dayB.setNumber(String.valueOf(valeurNumberB));
+		dayB.setNumber(valeurNumberB);
 		dayB.setTrek(Constante.getTrek());
 		daySave = object.save(dayB);
-		assertThat(String.valueOf(valeurNumberB)).isEqualTo(object.getById(daySave.getId()).getNumber());
+		assertThat(valeurNumberB).isEqualTo(object.getById(daySave.getId()).getNumber());
 		assertThat(numberBefore).isEqualTo(object.getAll().size());
 	}
 	

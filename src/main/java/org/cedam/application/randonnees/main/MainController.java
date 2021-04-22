@@ -1,18 +1,18 @@
 package org.cedam.application.randonnees.main;
 
-import org.cedam.application.randonnees.appconfig.AppConfigController;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Import;
+import org.cedam.application.randonnees.appconfig.AppConfigDao;
+import org.cedam.application.randonnees.controller.DayController;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
-@SpringBootApplication()
-@Import(AppConfigController.class)
-public class MainController extends SpringBootServletInitializer {
+public class MainController {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MainController.class);
+		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfigDao.class);
+		DayController dayController = appContext.getBean(DayController.class);
+		dayController.test();
+		
+		appContext.close();
 	}
 	
 }

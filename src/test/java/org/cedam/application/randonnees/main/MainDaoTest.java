@@ -14,6 +14,9 @@ public class MainDaoTest {
 	@Test
 	@Transactional
 	public void testMain() {
+		MainDao instance = new MainDao();
+		instance.toString();
+		
 		MainDao.main(null);
 		assertThat(true).isTrue();
 	}

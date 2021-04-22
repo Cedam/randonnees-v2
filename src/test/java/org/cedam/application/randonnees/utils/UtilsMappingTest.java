@@ -49,7 +49,6 @@ public class UtilsMappingTest {
 		assertThat(source.getYear()).isEqualTo(destination.getYear());
 		assertThat(source.getLocation()).isEqualTo(destination.getLocation());
 		assertThat(source.getDays()).isEqualTo(destination.getDays());
-		
 		assertThat(object.convertTrekToTrekDto(null)).isNull();
 	}
 
@@ -62,7 +61,6 @@ public class UtilsMappingTest {
 		assertThat(source.getYear()).isEqualTo(destination.getYear());
 		assertThat(source.getLocation()).isEqualTo(destination.getLocation());
 		assertThat(source.getDays()).isEqualTo(destination.getDays());
-
 		assertThat(object.convertTrekDtoToTrek(null)).isNull();
 	}
 

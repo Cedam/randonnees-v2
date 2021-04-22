@@ -10,7 +10,6 @@ import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +47,7 @@ public class DayDaoTest {
 		assertThat(result3.isEmpty()).isFalse();
 		assertThat(result3.size()).isNotZero();
 		
-		// Find Days by 'trekId' en pure SQL
+		// Find Days by 'trekId' native SQL
 		List<Day> result4 = object.findListByTrekIdSql(Constante.TREK_TEST_ID_1);
 		assertThat(result4.isEmpty()).isFalse();
 		assertThat(result4.size()).isNotZero();

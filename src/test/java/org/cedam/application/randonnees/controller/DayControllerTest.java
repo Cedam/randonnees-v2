@@ -55,7 +55,7 @@ public class DayControllerTest {
 		// Test update
 		dayInDto.setId(Constante.TREK_TEST_ID_1);
 		dayOutDto = object.save(dayInDto);
-		assertThat(dayOutDto.getBody().getId()).isEqualTo(Constante.TREK_TEST_ID_1);
+		assertThat(Constante.TREK_TEST_ID_1).isEqualTo(dayOutDto.getBody().getId());
 
 		assertThrows(Exception.class, () -> { object.save(null);});
 	}

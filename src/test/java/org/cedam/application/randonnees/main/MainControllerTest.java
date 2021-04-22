@@ -14,6 +14,9 @@ public class MainControllerTest {
 	@Test
 	@Transactional
 	public void testMain() {
+		MainController instance = new MainController();
+		instance.toString();
+		
 		MainController.main(null);
 		assertThat(true).isTrue();
 	}

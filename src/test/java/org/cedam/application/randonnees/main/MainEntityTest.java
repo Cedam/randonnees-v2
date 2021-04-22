@@ -12,6 +12,9 @@ public class MainEntityTest {
 
 	@Test
 	public void testMain() {
+		MainEntity instance = new MainEntity();
+		instance.toString();
+		
 		MainEntity.main(null);
 		assertThat(true).isTrue();
 	}

@@ -47,7 +47,7 @@ public class TrekControllerTest {
 		// Test update
 		trekInDto.setId(Constante.TREK_TEST_ID_1);
 		trekOutDto = object.save(trekInDto);
-		assertThat(trekOutDto.getBody().getId()).isEqualTo(Constante.TREK_TEST_ID_1);
+		assertThat(Constante.TREK_TEST_ID_1).isEqualTo(trekOutDto.getBody().getId());
 
 		assertThrows(Exception.class, () -> {
 			object.save(null);
