@@ -99,7 +99,7 @@ public class TrekServiceTest {
 		day.setNumber("98");
 		object.addDay(trek, day);
 		
-		//TODO le jour n'est pas présent dans la liste des jours du Trek (si on met en commentaire @Transactional, alors c'est bon.
+		//TODO le jour n'est pas present dans la liste des jours du Trek (si on met en commentaire @Transactional, alors c'est bon.
 		//assertThat(newTrek.getDays().size()).isEqualTo(nbDays+1);
 		
 		object.addDay(trek, null);

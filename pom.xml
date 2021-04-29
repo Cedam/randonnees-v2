@@ -3,20 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.cedam.application.randonnees</groupId>
-	<artifactId>randonnees-v2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<description>Projet un module 'Randonnees'</description>
-	<name>randonnees-v2</name>
-
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.8.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
+	<groupId>org.cedam.application.randonnees</groupId>
+	<artifactId>randonnees-v2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>randonnees-v2</name>
+	<description>Back du projet Randonnees</description>
 
 
 	<properties>
@@ -68,7 +67,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 		<!-- ************* BDD ************* -->
 		<dependency>
 			<groupId>javax.persistence</groupId>
@@ -123,12 +127,12 @@
 
 		<!-- ************* TEST ************* -->
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>    
-        
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- pour utiliser la partie test de Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

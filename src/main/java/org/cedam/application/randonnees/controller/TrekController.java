@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.cedam.application.randonnees.controller.exceptions.InternalErrorRandonneesException;
 import org.cedam.application.randonnees.controller.exceptions.NotFoundRandonneesException;
 import org.cedam.application.randonnees.dto.TrekDto;
+import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.utils.UtilsMapping;
@@ -35,7 +36,7 @@ public class TrekController {
 	@Autowired
 	UtilsMapping utilsMapping;
 
-	@GetMapping("/")
+	@GetMapping("")
 	@ResponseBody
 	public ResponseEntity<List<TrekDto>> getAll() {
 		var treksDto = new ArrayList<TrekDto>();
@@ -87,5 +88,6 @@ public class TrekController {
 	public ResponseEntity<String> test() {
 		return ok("Futur application randonnées : trek.");
 	}
+	
 
 }

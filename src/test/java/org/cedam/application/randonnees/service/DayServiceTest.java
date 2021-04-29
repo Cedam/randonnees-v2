@@ -49,7 +49,7 @@ public class DayServiceTest {
 		listDays.forEach(x -> {
 			if(x.getTrek().getId()!=Constante.TREK_TEST_ID_1)
 			{
-				fail(String.format("Incorrect TrekId (%s) for le Day %s", x.getTrek().getId(), x.getId()));
+				fail(String.format("Incorrect TrekId (%s) for the Day %s", x.getTrek().getId(), x.getId()));
 			}
 			
 		});
@@ -87,7 +87,7 @@ public class DayServiceTest {
 		Day daySave = object.save(dayA);
 		assertThat(valeurNumberA).isEqualTo(object.getById(daySave.getId()).getNumber());
 
-		// Détaché
+		// Detache
 		String valeurNumberB = String.valueOf(Math.random());
 		Day dayB = new Day();
 		dayB.setId(Constante.DAY_TEST_ID_2);

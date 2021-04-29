@@ -6,7 +6,7 @@ public class DayDto {
 
 	private String number;
 
-	private TrekDto trekDto;
+	private TrekDto trek;
 
 	public long getId() {
 		return id;
@@ -25,11 +25,11 @@ public class DayDto {
 	}
 
 	public TrekDto getTrek() {
-		return trekDto;
+		return trek;
 	}
 
 	public void setTrek(TrekDto trekDto) {
-		this.trekDto = trekDto;
+		this.trek = trekDto;
 	}
 
 }

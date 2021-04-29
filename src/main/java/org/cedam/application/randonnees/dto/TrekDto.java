@@ -47,11 +47,11 @@ public class TrekDto {
 		this.location = location;
 	}
 
-	public List<DayDto> getDays() {
+	public List<DayDto> getDaysDto() {
 		return daysDto;
 	}
 
-	public void setDays(List<DayDto> daysDto) {
+	public void setDaysDto(List<DayDto> daysDto) {
 		this.daysDto = daysDto;
 	}
 

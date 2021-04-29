@@ -15,10 +15,10 @@ public class UtilsMapping {
 	@Autowired
 	private DozerBeanMapperFactoryBean dozerBean;
 
-	public <T, V> T mapObjectToObject(V source, Class<T> class1) throws Exception {
+	public <T, V> T mapObjectToObject(V source, Class<T> classDest) throws Exception {
 		T destination = null;
 		if (source != null) {
-			destination = class1.getDeclaredConstructor().newInstance();
+			destination = classDest.getDeclaredConstructor().newInstance();
 			var mapper = (Mapper) dozerBean.getObject();
 			mapper.map(source, destination);
 		}
@@ -28,7 +28,7 @@ public class UtilsMapping {
 	public DayDto convertDayToDayDto(Day source) throws Exception {
 		return mapObjectToObject(source, DayDto.class);
 	}
-	
+
 	public TrekDto convertTrekToTrekDto(Trek source) throws Exception {
 		return mapObjectToObject(source, TrekDto.class);
 	}
