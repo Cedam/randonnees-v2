@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import javax.transaction.Transactional;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;
-import org.cedam.application.randonnees.controller.exceptions.NotFoundRandonneesException;
 import org.cedam.application.randonnees.dto.DayDto;
+import org.cedam.application.randonnees.exception.NotFoundRandonneesException;
 import org.cedam.application.randonnees.service.DayService;
 import org.cedam.application.randonnees.test.mock.Constante;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package org.cedam.application.randonnees.controller.exceptions;
+package org.cedam.application.randonnees.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

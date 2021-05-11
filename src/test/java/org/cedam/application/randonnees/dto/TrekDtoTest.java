@@ -29,14 +29,14 @@ public class TrekDtoTest {
 		trekDto.setName(name);
 		trekDto.setYear(year);
 		trekDto.setLocation(location);
-		trekDto.setDaysDto(daysDto);
+		trekDto.setDays(daysDto);
 
 		assertThat(id).isEqualTo(trekDto.getId());
 		assertThat(name).isEqualTo(trekDto.getName());
 		assertThat(location).isEqualTo(trekDto.getLocation());
 		assertThat(year).isEqualTo(trekDto.getYear());
 		assertThat(location).isEqualTo(trekDto.getLocation());
-		assertThat(daysDto).isEqualTo(trekDto.getDaysDto());
+		assertThat(daysDto).isEqualTo(trekDto.getDays());
 	}
 
 }

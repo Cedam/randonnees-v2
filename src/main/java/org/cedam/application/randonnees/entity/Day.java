@@ -7,7 +7,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "DAY")
 public class Day extends SuperEntity {
 
@@ -17,21 +22,5 @@ public class Day extends SuperEntity {
 	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "TREK_ID")
 	private Trek trek;
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
-	public Trek getTrek() {
-		return trek;
-	}
-
-	public void setTrek(Trek trek) {
-		this.trek = trek;
-	}
 
 }

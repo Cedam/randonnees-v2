@@ -10,52 +10,25 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "TREK")
 public class Trek extends SuperEntity {
 
-	@Column(name = "NAME", nullable = false, unique = false)
+	@Column(name = "NAME", length = 50, nullable = false, unique = false)
 	private String name;
 
 	@Column(name = "YEAR", nullable = false, unique = false)
 	private int year;
 
-	@Column(name = "LOCATION", nullable = false, unique = false)
+	@Column(name = "LOCATION", length = 50, nullable = false, unique = false)
 	private String location;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trek", fetch = FetchType.EAGER)
 	private List<Day> days = new ArrayList<>();
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public List<Day> getDays() {
-		return days;
-	}
-
-	public void setDays(List<Day> days) {
-		this.days = days;
-	}
 
 }

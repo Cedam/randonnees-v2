@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.cedam.application.randonnees.controller.exceptions.InternalErrorRandonneesException;
-import org.cedam.application.randonnees.controller.exceptions.NotFoundRandonneesException;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Trek;
+import org.cedam.application.randonnees.exception.InternalErrorRandonneesException;
+import org.cedam.application.randonnees.exception.RequiredAttributException;
 import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.utils.UtilsMapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,7 +49,6 @@ public class TrekController {
 				throw new InternalErrorRandonneesException(e);
 			}
 		});
-
 		return ok(treksDto);
 	}
 
@@ -56,22 +56,25 @@ public class TrekController {
 	@ResponseBody
 	public ResponseEntity<TrekDto> getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
 		Trek trek = manager.getById(id);
-		
 		var trekDto = utilsMapping.convertTrekToTrekDto(trek);
-		if(trekDto==null)
-		{
-			throw new NotFoundRandonneesException(String.format("Aucun Trek avec l'ID '%s'", id));
+		if (trekDto == null) {
+			throw new RequiredAttributException(String.format("Aucun Trek avec l'ID '%s'", id));
 		}
-		
 		return ok(trekDto);
 	}
 
-	@PostMapping("/")
+	@PostMapping("/save")
 	@ResponseBody
-	public ResponseEntity<TrekDto> save(TrekDto trekInDto) throws Exception {
+	public ResponseEntity<TrekDto> save(@RequestBody TrekDto trekDto)
+			throws Exception {
 		TrekDto trekOutDto = null;
-			Trek trek = manager.save(utilsMapping.convertTrekDtoToTrek(trekInDto));
+		try {
+			Trek trek = manager.save(utilsMapping.convertTrekDtoToTrek(trekDto));
 			trekOutDto = utilsMapping.convertTrekToTrekDto(trek);
+		} catch (Exception e) {
+			logger.error("TrekController.save", e);
+			throw new InternalErrorRandonneesException(e);
+		}
 		return ok(trekOutDto);
 	}
 
@@ -87,6 +90,5 @@ public class TrekController {
 	public ResponseEntity<String> test() {
 		return ok("Futur application randonnées : trek.");
 	}
-	
 
 }

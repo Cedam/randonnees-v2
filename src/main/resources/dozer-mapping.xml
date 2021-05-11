@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mappings xmlns="http://dozer.sourceforge.net" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://dozer.sourceforge.net
+<mappings xmlns="http://dozer.sourceforge.net"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
       http://dozer.sourceforge.net/schema/beanmapping.xsd">
-      
-      
-                
+
 	<mapping>
-		<class-a>org.cedam.application.randonnees.dto.Day</class-a>
+		<class-a>org.cedam.application.randonnees.entity.Day</class-a>
 		<class-b>org.cedam.application.randonnees.dto.DayDto</class-b>
 		<field-exclude>
 			<a>trek</a>
@@ -16,12 +14,13 @@
 	</mapping>
 
 	<mapping>
-		<class-a>org.cedam.application.randonnees.dto.DayDto</class-a>
-		<class-b>org.cedam.application.randonnees.dto.Day</class-b>
-		<field-exclude>
-			<a>trek</a>
-			<b>trek</b>
-		</field-exclude>
+		<class-a>org.cedam.application.randonnees.entity.Trek</class-a>
+		<class-b>org.cedam.application.randonnees.dto.TrekDto</class-b>
+<!-- 		<field-exclude> -->
+<!-- 			<a>days</a> -->
+<!-- 			<b>days</b> -->
+<!-- 		</field-exclude> -->
 	</mapping>
+
 
 </mappings>

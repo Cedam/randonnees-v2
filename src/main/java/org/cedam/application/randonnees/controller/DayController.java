@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.cedam.application.randonnees.controller.exceptions.InternalErrorRandonneesException;
-import org.cedam.application.randonnees.controller.exceptions.NotFoundRandonneesException;
 import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.entity.Day;
+import org.cedam.application.randonnees.exception.InternalErrorRandonneesException;
+import org.cedam.application.randonnees.exception.NotFoundRandonneesException;
 import org.cedam.application.randonnees.service.DayService;
 import org.cedam.application.randonnees.utils.UtilsMapping;
 import org.springframework.beans.factory.annotation.Autowired;

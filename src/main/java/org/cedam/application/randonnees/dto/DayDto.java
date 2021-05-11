@@ -1,5 +1,13 @@
 package org.cedam.application.randonnees.dto;
 
+import org.springframework.stereotype.Service;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Service
+@Getter
+@Setter
 public class DayDto {
 
 	private long id;
@@ -7,29 +15,5 @@ public class DayDto {
 	private String number;
 
 	private TrekDto trek;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
-	public TrekDto getTrek() {
-		return trek;
-	}
-
-	public void setTrek(TrekDto trekDto) {
-		this.trek = trekDto;
-	}
 
 }

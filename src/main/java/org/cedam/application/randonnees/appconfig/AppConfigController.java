@@ -20,7 +20,7 @@ public class AppConfigController {
 	public DozerBeanMapperFactoryBean configDozer() throws IOException {
 		DozerBeanMapperFactoryBean mapper = new DozerBeanMapperFactoryBean();
 		var pathMatchingResourcePatternResolver = new PathMatchingResourcePatternResolver();
-		var resources = pathMatchingResourcePatternResolver.getResources("classpath*:dozer-mappings.xml");
+		var resources = pathMatchingResourcePatternResolver.getResources("classpath*:dozer-mapping.xml");
 		mapper.setMappingFiles(resources);
 		return mapper;
 	}
