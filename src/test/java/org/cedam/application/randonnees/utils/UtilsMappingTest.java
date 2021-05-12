@@ -1,6 +1,7 @@
 package org.cedam.application.randonnees.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.cedam.application.randonnees.appconfig.AppConfigController;
 import org.cedam.application.randonnees.dto.DayDto;
@@ -26,7 +27,7 @@ public class UtilsMappingTest {
 		DayDto destination = object.convertDayToDayDto(source);
 		assertThat(source.getId()).isEqualTo(destination.getId());
 		assertThat(source.getNumber()).isEqualTo(destination.getNumber());
-		assertThat(source.getTrek().getId()).isEqualTo(destination.getTrek().getId());
+		assertNull(destination.getTrek());
 		assertThat(object.convertDayToDayDto(null)).isNull();
 	}
 
@@ -36,7 +37,7 @@ public class UtilsMappingTest {
 		Day destination = object.convertDayDtoToDay(source);
 		assertThat(source.getId()).isEqualTo(destination.getId());
 		assertThat(source.getNumber()).isEqualTo(destination.getNumber());
-		assertThat(source.getTrek().getId()).isEqualTo(destination.getTrek().getId());
+		assertNull(destination.getTrek());
 		assertThat(object.convertDayDtoToDay(null)).isNull();
 	}
 
