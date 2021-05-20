@@ -15,7 +15,7 @@ public class UtilsMapping {
 	@Autowired
 	private DozerBeanMapperFactoryBean dozerBean;
 
-	public <T, V> T mapObjectToObject(V source, Class<T> classDest) throws Exception {
+	private <T, V> T mapObjectToObject(V source, Class<T> classDest) throws Exception {
 		T destination = null;
 		if (source != null) {
 			destination = classDest.getDeclaredConstructor().newInstance();

@@ -7,7 +7,6 @@ import java.time.ZoneId;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,15 +19,6 @@ import lombok.Getter;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     /**
-     * Permet la résolution des messages i18n
-     */
-    private final MessageSource messageSource;
-
-    public GlobalExceptionHandler(MessageSource messageSource) {
-        this.messageSource = messageSource;
-    }
-
-    /**
      * Gère toutes les exceptions {@link BusinessException}, {@link TechnicalException} ainsi que toutes celles qui en héritent.
      *
      * @param ex      exception
@@ -37,10 +27,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @ExceptionHandler({ RequiredAttributException.class, InternalErrorRandonneesException.class, NotFoundRandonneesException.class })
     public final ResponseEntity<ErrorResponse> handleAppException(HttpServletRequest request, RuntimeException ex) {
-    	
-        ResponseEntity<ErrorResponse> response = buildResponse(INTERNAL_SERVER_ERROR, ex.getMessage(), request.getRequestURI());
-        
-        return response;
+        return buildResponse(INTERNAL_SERVER_ERROR, ex.getMessage(), request.getRequestURI());
     }
 
     /**

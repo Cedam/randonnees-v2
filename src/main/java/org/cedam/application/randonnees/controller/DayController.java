@@ -17,9 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,9 +36,9 @@ public class DayController {
 	UtilsMapping utilsMapping;
 
     
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<DayDto> getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
+	public ResponseEntity<DayDto> getById(@PathVariable(value = "id") long id) throws Exception {
 		Day day = manager.getById(id);
 		var dayDto = utilsMapping.convertDayToDayDto(day);
 		
@@ -49,9 +49,9 @@ public class DayController {
 		return ok(dayDto);
 	}
 
-	@GetMapping("/bytrekid")
+	@GetMapping("/bytrekid/{id}")
 	@ResponseBody
-	public ResponseEntity<List<DayDto>> getAllByTrekId(@RequestParam(value = "id", defaultValue = "0") long id) {
+	public ResponseEntity<List<DayDto>> getAllByTrekId(@PathVariable(value = "id") long id) {
 		var daysDto = new ArrayList<DayDto>();
 		var days = manager.getListByTrekId(id);
 		days.forEach(x -> {
@@ -75,9 +75,9 @@ public class DayController {
 		return ok(dayOutDto);
 	}
 
-	@DeleteMapping("/id")
+	@DeleteMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<Boolean> delete(@RequestParam(value = "id", defaultValue = "0") long id) {
+	public ResponseEntity<Boolean> delete(@PathVariable(value = "id") long id) {
 		manager.delete(id);
 		return ok(true);
 	}

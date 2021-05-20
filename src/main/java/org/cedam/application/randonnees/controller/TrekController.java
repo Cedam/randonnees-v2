@@ -17,10 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,9 +52,9 @@ public class TrekController {
 		return ok(treksDto);
 	}
 
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<TrekDto> getById(@RequestParam(value = "id", defaultValue = "0") long id) throws Exception {
+	public ResponseEntity<TrekDto> getById(@PathVariable(value = "id") long id) throws Exception {
 		Trek trek = manager.getById(id);
 		var trekDto = utilsMapping.convertTrekToTrekDto(trek);
 		if (trekDto == null) {
@@ -78,9 +78,9 @@ public class TrekController {
 		return ok(trekOutDto);
 	}
 
-	@DeleteMapping("/id")
+	@DeleteMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<Boolean> delete(@RequestParam(value = "id", defaultValue = "0") long id) {
+	public ResponseEntity<Boolean> delete(@PathVariable(value = "id") long id) {
 		manager.delete(id);
 		return ok(true);
 	}
