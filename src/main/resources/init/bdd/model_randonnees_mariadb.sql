@@ -1,9 +1,7 @@
 use randonnees;
 
-
-DROP TABLE `article`;
-DROP TABLE `day`;
-DROP TABLE `trek`; 
+DROP TABLE IF EXISTS day CASCADE;
+DROP TABLE IF EXISTS trek CASCADE;
 
 /**************************************************************************************************************/
 /******************************** DEBUT GENERATION AUTOMATIQUE ************************************************/
@@ -36,17 +34,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article`
---
-
-CREATE TABLE `article` (
-  `ID` bigint(20) NOT NULL,
-  `NAME` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `day`
 --
 
@@ -74,12 +61,6 @@ CREATE TABLE `trek` (
 --
 
 --
--- Index pour la table `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Index pour la table `day`
 --
 ALTER TABLE `day`
@@ -95,12 +76,6 @@ ALTER TABLE `trek`
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
-
---
--- AUTO_INCREMENT pour la table `article`
---
-ALTER TABLE `article`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `day`
