@@ -65,8 +65,7 @@ public class TrekController {
 
 	@PostMapping("/save")
 	@ResponseBody
-	public ResponseEntity<TrekDto> save(@RequestBody TrekDto trekDto)
-			throws Exception {
+	public ResponseEntity<TrekDto> save(@RequestBody TrekDto trekDto) throws Exception {
 		TrekDto trekOutDto = null;
 		try {
 			Trek trek = manager.save(utilsMapping.convertTrekDtoToTrek(trekDto));

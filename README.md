@@ -11,4 +11,8 @@ Maven 3.6.2
 //https://openclassrooms.com/fr/courses/4668216-optimisez-votre-architecture-microservices/5176263-faites-communiquer-vos-microservices-grace-a-feign
 
 	
-	
+java -jar randonnees-v2-0.0.1-SNAPSHOT.jar
+
+
+enlever lien Hibernate
+ajouter @service sur DAO

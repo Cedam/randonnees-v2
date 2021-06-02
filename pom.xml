@@ -13,7 +13,6 @@
 	<groupId>org.cedam.application.randonnees</groupId>
 	<artifactId>randonnees-v2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>randonnees-v2</name>
 	<description>Back du projet Randonnees</description>
 
@@ -24,10 +23,6 @@
 		<maven.compiler.target>12</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<log4j.version>2.11.2</log4j.version>
-
-		<commandline.workspace>commandline_workspace_path</commandline.workspace>
-		<product.path>studio_path</product.path>
-		<projectsTargetDirectory>${basedir}/projectSources</projectsTargetDirectory>
 		<deploy.version>A.B.C-SNAPSHOT</deploy.version>
 		<jacoco.version>0.8.2</jacoco.version>
 	</properties>
