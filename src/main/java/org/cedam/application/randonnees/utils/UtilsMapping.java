@@ -26,7 +26,9 @@ public class UtilsMapping {
 	}
 
 	public DayDto convertDayToDayDto(Day source) throws Exception {
-		return mapObjectToObject(source, DayDto.class);
+	    var tmp = mapObjectToObject(source, DayDto.class);
+	    tmp.setTrek(mapObjectToObject(source.getTrek(), TrekDto.class));
+		return tmp;
 	}
 
 	public TrekDto convertTrekToTrekDto(Trek source) throws Exception {
@@ -34,7 +36,9 @@ public class UtilsMapping {
 	}
 
 	public Day convertDayDtoToDay(DayDto source) throws Exception {
-		return mapObjectToObject(source, Day.class);
+	    var tmp = mapObjectToObject(source, Day.class);
+	    tmp.setTrek(mapObjectToObject(source.getTrek(), Trek.class));
+		return tmp;
 	}
 
 	public Trek convertTrekDtoToTrek(TrekDto source) throws Exception {

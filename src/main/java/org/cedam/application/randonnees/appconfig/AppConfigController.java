@@ -21,7 +21,7 @@ public class AppConfigController {
 		DozerBeanMapperFactoryBean mapper = new DozerBeanMapperFactoryBean();
 		var pathMatchingResourcePatternResolver = new PathMatchingResourcePatternResolver();
 		var resources = pathMatchingResourcePatternResolver.getResources("classpath*:dozer-mapping.xml");
-		mapper.setMappingFiles(resources);
+		mapper.setMappingFiles(resources);      
 		return mapper;
 	}
 
