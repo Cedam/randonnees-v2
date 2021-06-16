@@ -14,6 +14,10 @@ import org.springframework.context.annotation.PropertySource;
 public class AppConfigDao {
 
 	//Test Commit
-	
-	
+	private void rien()
+	{
+		int a = 1;
+		
+	}
+	 
 }
