@@ -51,7 +51,7 @@ public class DayController {
 
 	@GetMapping("/bytrekid/{id}")
 	@ResponseBody
-	public ResponseEntity<List<DayDto>> getAllByTrekId(@PathVariable(value = "id") long id) {
+	public ResponseEntity<List<DayDto>> getByTrekId(@PathVariable(value = "id") long id) {
 		var daysDto = new ArrayList<DayDto>();
 		var days = manager.getListByTrekId(id);
 		days.forEach(x -> {

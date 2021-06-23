@@ -37,7 +37,7 @@ public class DayControllerTest {
 	@Test
 	public void testGetAllByTrekId()  {
 		long idDay = Constante.TREK_TEST_ID_1;
-		var days = object.getAllByTrekId(idDay);
+		var days = object.getByTrekId(idDay);
 		assertThat(days.getBody().size()).isNotZero();
 		assertThat(days.getBody().get(0)).isNotNull();
 	}
