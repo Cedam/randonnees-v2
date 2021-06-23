@@ -10,8 +10,11 @@ public class MainController {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfigDao.class);
 		DayController dayController = appContext.getBean(DayController.class);
-		dayController.test();
-		
+		try {
+			dayController.getById(1L);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		appContext.close();
 	}
 	

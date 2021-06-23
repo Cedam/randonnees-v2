@@ -87,10 +87,4 @@ public class DayController {
 		return ok(true);
 	}
 
-	@GetMapping("/test")
-	@ResponseBody
-	public ResponseEntity<String> test() {
-		return ok("Futur application randonnées : day");
-	}
-
 }

@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @Configuration
+@EnableSwagger2
 @Import(AppConfigService.class)
 @ComponentScans(value = { @ComponentScan("org.cedam.application.randonnees.controller"),
 		@ComponentScan("org.cedam.application.randonnees.utils") })

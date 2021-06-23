@@ -63,9 +63,5 @@ public class TrekControllerTest {
 		assertThrows(Exception.class, () -> { object.getById(id); });
 	}
 
-	@Test
-	public void testTest() {
-		assertThat("Futur application randonnées : trek.").isEqualTo(object.test().getBody());
-	}
 
 }
