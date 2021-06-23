@@ -13,5 +13,4 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan(basePackages = { "org.cedam.application.randonnees" })
 public class AppConfigDao {
 
-	//TEST COMMIT
 }
