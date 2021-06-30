@@ -12,10 +12,12 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @Table(name = "TREK")
 public class Trek extends SuperEntity {
 
