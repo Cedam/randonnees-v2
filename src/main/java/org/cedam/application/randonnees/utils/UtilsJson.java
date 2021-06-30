@@ -10,7 +10,6 @@ public class UtilsJson {
 
 	public <T> String serialize(T obj) throws JsonProcessingException
 	{
-		//TEST
 		ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.writeValueAsString(obj);
 	}
