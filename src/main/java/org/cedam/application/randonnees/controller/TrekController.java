@@ -5,8 +5,6 @@ import static org.springframework.http.ResponseEntity.ok;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.cedam.application.randonnees.dto.TrekDto;
 import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.exception.InternalErrorRandonneesException;
@@ -24,11 +22,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j2;
+
 @RestController
 @RequestMapping("/treks")
+@Log4j2
 public class TrekController {
-
-	private static final Logger logger = LogManager.getLogger(TrekController.class);
 
 	@Autowired
 	private TrekService manager;
@@ -45,7 +44,7 @@ public class TrekController {
 			try {
 				treksDto.add(utilsMapping.convertTrekToTrekDto(x));
 			} catch (Exception e) {
-				logger.error("UtilsMapping.convertTrekToTrekDto", e);
+				log.error("UtilsMapping.convertTrekToTrekDto", e);
 				throw new InternalErrorRandonneesException(e);
 			}
 		});
@@ -71,7 +70,7 @@ public class TrekController {
 			Trek trek = manager.save(utilsMapping.convertTrekDtoToTrek(trekDto));
 			trekOutDto = utilsMapping.convertTrekToTrekDto(trek);
 		} catch (Exception e) {
-			logger.error("TrekController.save", e);
+			log.error("TrekController.save", e);
 			throw new InternalErrorRandonneesException(e);
 		}
 		return ok(trekOutDto);
