@@ -5,8 +5,6 @@ import static org.springframework.http.ResponseEntity.ok;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.entity.Day;
 import org.cedam.application.randonnees.exception.InternalErrorRandonneesException;
@@ -24,11 +22,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j2;
+
+
 @RestController
 @RequestMapping("/days")
+@Log4j2
 public class DayController {
 
-	private static final Logger logger = LogManager.getLogger(DayController.class);
+	//private static final Logger logger = LogManager.getLogger(DayController.class);
 
 	@Autowired
 	private DayService manager;
@@ -58,7 +60,7 @@ public class DayController {
 			try {
 				daysDto.add(utilsMapping.convertDayToDayDto(x));
 			} catch (Exception e) {
-				logger.error("DayController.getAllByTrekId", e);
+				log.error("DayController.getAllByTrekId", e);
 				throw new InternalErrorRandonneesException(e);
 			}
 		});
@@ -74,7 +76,7 @@ public class DayController {
 			Day dayOut = manager.save(dayIn);
 			dayOutDto = utilsMapping.convertDayToDayDto(dayOut);
 		} catch (Exception e) {
-			logger.error("DayController.save", e);
+			log.error("DayController.save", e);
 			throw new InternalErrorRandonneesException(e);
 		}
 		return ok(dayOutDto);
