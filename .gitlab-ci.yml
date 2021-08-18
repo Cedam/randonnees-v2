@@ -20,15 +20,42 @@ stages:
   - package
   - install
 
-compile:
+compileJob:
   stage: build
   script:
     - echo "This job is build"
     - 'mvn $MAVEN_CLI_OPTS compile'
 
-#test:
-#  stage: test
+testJob:
+  stage: test
+  script:
+    - echo "This job is test"
+    - 'mvn $MAVEN_CLI_OPTS test'
+
+#Fonctionne mais n est pas interessant 
+#qualityJob:
+#  stage: quality
+#  image: docker:stable
+#  allow_failure: true
+#  services:
+#    - docker:stable-dind
 #  script:
-#    - echo "This job is test"
-#    - 'mvn $MAVEN_CLI_OPTS test'
+#    - mkdir codequality-results
+#    - docker run
+#        --env CODECLIMATE_CODE="$PWD"
+#        --volume "$PWD":/code
+#        --volume /var/run/docker.sock:/var/run/docker.sock
+#        --volume /tmp/cc:/tmp/cc
+#        codeclimate/codeclimate analyze -f html > ./codequality-results/index.html
+#  artifacts:
+#    paths:
+#      - codequality-results/
+
+#sonar:
+#  image: sonarsource/sonar-scanner-cli
+#  script:
+#    - sonar-scanner -Dsonar.qualitygate.wait=true
+#  allow_failure: true
+#  variables:
+#    SONAR_PROJECT_BASE_DIR: "${CI_PROJECT_DIR}"
 
