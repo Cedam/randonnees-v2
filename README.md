@@ -12,3 +12,8 @@ Maven 3.6.2
 
 java -jar randonnees-v2-0.0.1-SNAPSHOT.jar
 
+Github : 
+https://github.com/Cedam/randonnees-v2
+
+GitLab (automatic mirrored from Github) :
+https://gitlab.com/cedam56/randonnees-v2
