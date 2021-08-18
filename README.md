@@ -17,3 +17,5 @@ https://github.com/Cedam/randonnees-v2
 
 GitLab (automatic mirrored from Github) :
 https://gitlab.com/cedam56/randonnees-v2
+
+test
