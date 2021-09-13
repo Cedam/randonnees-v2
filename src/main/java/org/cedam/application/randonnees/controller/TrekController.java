@@ -13,14 +13,7 @@ import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.utils.UtilsMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -57,7 +50,18 @@ public class TrekController {
 		Trek trek = manager.getById(id);
 		var trekDto = utilsMapping.convertTrekToTrekDto(trek);
 		if (trekDto == null) {
-			throw new RequiredAttributException(String.format("Aucun Trek avec l'ID '%s'", id));
+			throw new RequiredAttributException(String.format("Aucun Trek avec l'ID '%x'", id));
+		}
+		return ok(trekDto);
+	}
+
+	@GetMapping("byname/{name}")
+	@ResponseBody
+	public ResponseEntity<TrekDto> getByName(@PathVariable(value = "name") String name) throws Exception {
+		Trek trek = manager.getByName(name);
+		var trekDto = utilsMapping.convertTrekToTrekDto(trek);
+		if (trekDto == null) {
+			throw new RequiredAttributException(String.format("Aucun Trek avec le nom '%s'", name));
 		}
 		return ok(trekDto);
 	}

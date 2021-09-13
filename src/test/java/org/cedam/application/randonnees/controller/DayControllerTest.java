@@ -22,6 +22,7 @@ public class DayControllerTest {
 
 	@Autowired
 	private DayController object;
+
 	@Autowired
 	private DayService dayService;
 	
@@ -31,7 +32,8 @@ public class DayControllerTest {
 		ResponseEntity<DayDto> day = object.getById(idDay);
 		assertThat(idDay).isEqualTo(day.getBody().getId());
 		
-		assertThrows(NotFoundRandonneesException.class, () -> { object.getById(-1);});
+		assertThrows(NotFoundRandonneesException.class, () -> object.getById(-1));
+
 	}
 
 	@Test
@@ -57,7 +59,7 @@ public class DayControllerTest {
 		dayOutDto = object.save(dayInDto);
 		assertThat(Constante.TREK_TEST_ID_1).isEqualTo(dayOutDto.getBody().getId());
 
-		assertThrows(Exception.class, () -> { object.save(null);});
+		assertThrows(Exception.class, () -> object.save(null));
 	}
 	
 	@Test
@@ -66,7 +68,7 @@ public class DayControllerTest {
 		var days = dayService.getAll();
 		long id = days.get(days.size()-1).getId();
 		object.delete(id);
-		assertThrows(Exception.class, () -> { object.getById(id); });
+		assertThrows(Exception.class, () -> object.getById(id));
 	}
 
 

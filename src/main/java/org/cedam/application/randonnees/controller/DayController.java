@@ -7,9 +7,11 @@ import java.util.List;
 
 import org.cedam.application.randonnees.dto.DayDto;
 import org.cedam.application.randonnees.entity.Day;
+import org.cedam.application.randonnees.entity.Trek;
 import org.cedam.application.randonnees.exception.InternalErrorRandonneesException;
 import org.cedam.application.randonnees.exception.NotFoundRandonneesException;
 import org.cedam.application.randonnees.service.DayService;
+import org.cedam.application.randonnees.service.TrekService;
 import org.cedam.application.randonnees.utils.UtilsMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +35,10 @@ public class DayController {
 	//private static final Logger logger = LogManager.getLogger(DayController.class);
 
 	@Autowired
-	private DayService manager;
+	private DayService service;
+
+	@Autowired
+	private TrekService trekService;
 
 	@Autowired
 	UtilsMapping utilsMapping;
@@ -41,7 +46,7 @@ public class DayController {
 	@GetMapping("/{id}")
 	@ResponseBody
 	public ResponseEntity<DayDto> getById(@PathVariable(value = "id") long id) throws Exception {
-		Day day = manager.getById(id);
+		Day day = service.getById(id);
 		var dayDto = utilsMapping.convertDayToDayDto(day);
 		
 		if(dayDto==null)
@@ -55,7 +60,7 @@ public class DayController {
 	@ResponseBody
 	public ResponseEntity<List<DayDto>> getByTrekId(@PathVariable(value = "id") long id) {
 		var daysDto = new ArrayList<DayDto>();
-		var days = manager.getListByTrekId(id);
+		var days = service.getListByTrekId(id);
 		days.forEach(x -> {
 			try {
 				daysDto.add(utilsMapping.convertDayToDayDto(x));
@@ -72,8 +77,10 @@ public class DayController {
 	public ResponseEntity<DayDto> save(@RequestBody DayDto dayInDto) throws Exception {
 		DayDto dayOutDto = null;
 		try {
-			var dayIn = utilsMapping.convertDayDtoToDay(dayInDto);
-			Day dayOut = manager.save(dayIn);
+			Day dayIn = utilsMapping.convertDayDtoToDay(dayInDto);
+			//Trek trek = trekService.getById(dayInDto.getIdTrek());
+			//dayIn.setTrek(trek);
+			Day dayOut = service.save(dayIn);
 			dayOutDto = utilsMapping.convertDayToDayDto(dayOut);
 		} catch (Exception e) {
 			log.error("DayController.save", e);
@@ -85,7 +92,7 @@ public class DayController {
 	@DeleteMapping("/{id}")
 	@ResponseBody
 	public ResponseEntity<Boolean> delete(@PathVariable(value = "id") long id) {
-		manager.delete(id);
+		service.delete(id);
 		return ok(true);
 	}
 

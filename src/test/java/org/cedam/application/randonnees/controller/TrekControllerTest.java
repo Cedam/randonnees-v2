@@ -49,9 +49,7 @@ public class TrekControllerTest {
 		trekOutDto = object.save(trekInDto);
 		assertThat(Constante.TREK_TEST_ID_1).isEqualTo(trekOutDto.getBody().getId());
 
-		assertThrows(Exception.class, () -> {
-			object.save(null);
-		});
+		assertThrows(Exception.class, () -> object.save(null));
 	}
 
 	@Test
@@ -60,7 +58,7 @@ public class TrekControllerTest {
 		var treks = object.getAll();
 		long id = treks.getBody().get(treks.getBody().size() - 1).getId();
 		object.delete(id);
-		assertThrows(Exception.class, () -> { object.getById(id); });
+		assertThrows(Exception.class, () -> object.getById(id));
 	}
 
 

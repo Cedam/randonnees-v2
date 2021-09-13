@@ -35,7 +35,7 @@ public class TrekDaoTest {
 
 		Day day = dayDao.findAll().iterator().next();
 
-		List<Day> listDays = new ArrayList<Day>();
+		List<Day> listDays = new ArrayList<>();
 		listDays.add(day);
 		trek.setDays(listDays);
 		trekResult = object.save(trek);

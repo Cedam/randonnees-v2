@@ -34,6 +34,16 @@ public class TrekService {
 		return trek;
 	}
 
+	public Trek getByName(String name) {
+		Trek trek = null;
+		List<Trek> treks = trekDao.findByName(name);
+		Optional<Trek> trekOpt = treks.stream().findFirst();
+		if (trekOpt.isPresent()) {
+			trek = trekOpt.get();
+		}
+		return trek;
+	}
+
 	public Trek save(Trek trek) {
 		return trekDao.save(trek);
 	}

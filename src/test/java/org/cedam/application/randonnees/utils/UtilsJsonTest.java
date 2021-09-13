@@ -16,8 +16,8 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest
 public class UtilsJsonTest {
 
-	private String DAY_JSON ="{\"id\":0,\"number\":\"TEST_NUMBER_1\",\"trek\":{\"id\":1,\"name\":\"TEST_NAME_1\",\"year\":0,\"location\":\"TEST_NUMBER_1\",\"days\":[]}}";
-	private String TREK_JSON ="{\"id\":1,\"name\":\"TEST_NAME_1\",\"year\":0,\"location\":\"TEST_NUMBER_1\",\"days\":[]}";
+	private final String DAY_JSON ="{\"id\":0,\"number\":\"TEST_NUMBER_1\",\"trek\":{\"id\":1,\"name\":\"TEST_NAME_1\",\"year\":0,\"location\":\"TEST_NUMBER_1\",\"days\":[]}}";
+	private final String TREK_JSON ="{\"id\":1,\"name\":\"TEST_NAME_1\",\"year\":0,\"location\":\"TEST_NUMBER_1\",\"days\":[]}";
 	
 	
 	@Autowired

@@ -16,6 +16,8 @@ public class DayDto {
 
 	private String number;
 
+	private long idTrek;
+
 	private TrekDto trek;
 
 }
