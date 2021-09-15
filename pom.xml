@@ -26,7 +26,6 @@
 		<deploy.version>A.B.C-SNAPSHOT</deploy.version>
 		<jacoco.version>0.8.7</jacoco.version>
 		
-		<sonar.analysis.mode>preview</sonar.analysis.mode>
          <sonar.issuesReport.html.enable>true</sonar.issuesReport.html.enable>
 	</properties>
 
