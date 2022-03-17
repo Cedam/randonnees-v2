@@ -14,7 +14,7 @@
 	<artifactId>randonnees-v2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>randonnees-v2</name>
-	<description>Back du projet Randonnees</description>
+	<description>Back du projet Randonnees.</description>
 	<packaging>war</packaging>
 
 	<properties>
