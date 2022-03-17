@@ -25,6 +25,8 @@
 		<log4j.version>2.11.2</log4j.version>
 		<deploy.version>A.B.C-SNAPSHOT</deploy.version>
 		<jacoco.version>0.8.7</jacoco.version>
+		<sonar.organization>cedam-randonnees-front</sonar.organization>
+ 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		
          <sonar.issuesReport.html.enable>true</sonar.issuesReport.html.enable>
 	</properties>
